@@ -5,8 +5,8 @@ button.addEventListener("click", () => {
 
     // Change button text
     if (document.body.classList.contains("dark")) {
-        button.textContent = "☀️ Light Mode";
+        button.textContent = "☀️";
     } else {
-        button.textContent = "🌙 Dark Mode";
+        button.textContent = "🌙";
     }
 });
