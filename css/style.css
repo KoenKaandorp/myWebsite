@@ -35,6 +35,22 @@ header {
     text-align: center;
 }
 
+#darkModeToggle {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#darkModeToggle:hover {
+    opacity: 0.85;
+}
+
 /* ===== NAVIGATION ===== */
 nav a {
     color: var(--white);
