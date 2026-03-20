@@ -142,6 +142,30 @@ h3 {
 }
 
 /* ================= HERO ================= */
+/* Canvas wrapper */
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Canvas itself */
+.connecting-dots {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Content sits above canvas */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
 .hero {
   height: 100vh;
   display: flex;
@@ -149,6 +173,8 @@ h3 {
   justify-content: center;
   text-align: center;
   padding-top: 80px;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero h1 {
