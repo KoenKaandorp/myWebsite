@@ -1,13 +1,13 @@
 /* ================= ROOT / DESIGN SYSTEM ================= */
 :root {
   /* Colors */
-  --color-background: #f8f6f4;
+  --color-background: #F3F7F0;
   --color-surface: #ffffff;
-  --color-text: #1f2121;
-  --color-text-secondary: #626c71;
+  --color-text: #19323C;
+  --color-text-secondary: #bd4c63;
 
-  --color-primary: #21808d;
-  --color-primary-hover: #1d7480;
+  --color-primary: #F2545C;
+  --color-primary-hover: #F57A80;
 
   --color-border: rgba(0, 0, 0, 0.08);
 
@@ -40,6 +40,7 @@
 
   /* Layout */
   --container-width: 1100px;
+  --particle-color: 189, 76, 99; /* RGB format (important!) */
 }
 
 /* ================= RESET ================= */

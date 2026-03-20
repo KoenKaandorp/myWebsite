@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
 (function () {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const particleColor = rootStyles.getPropertyValue('--particle-color').trim();
     const canvas = document.querySelector(".connecting-dots");
     const ctx = canvas.getContext("2d");
     const hero = document.querySelector(".hero");
@@ -109,7 +111,7 @@ function resize() {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "#51a2e9";
+      ctx.fillStyle = `rgb(${particleColor})`;
       ctx.fill();
     }
   }
@@ -135,7 +137,7 @@ function resize() {
         if (dist < maxDistance) {
           const opacity = 1 - dist / maxDistance;
 
-          ctx.strokeStyle = `rgba(81, 162, 233, ${opacity})`;
+          ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`;
           ctx.lineWidth = 1;
 
           ctx.beginPath();
