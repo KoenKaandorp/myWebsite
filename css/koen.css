@@ -16,6 +16,7 @@
   --font-size-sm: 14px;
   --font-size-base: 16px;
   --font-size-lg: 20px;
+  --font-size-xg: 26px;
   --font-size-xl: 32px;
 
   --font-weight-normal: 400;
@@ -74,6 +75,11 @@ h1, h2, h3 {
 h2 {
   margin-bottom: var(--space-32);
   font-size: var(--font-size-xl);
+}
+
+h3 {
+  margin-bottom: var(--space-5);
+  font-size: var(--font-size-xg);
 }
 
 /* ================= NAVBAR ================= */
@@ -169,9 +175,9 @@ h2 {
 
 /* ================= EXPERIENCE ================= */
 .timeline-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-48);
-  flex-wrap: wrap;
 }
 
 .timeline-column {
@@ -182,7 +188,7 @@ h2 {
 .timeline-item {
   position: relative;
   padding-left: var(--space-24);
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-32);
 }
 
 .timeline-item::before {
@@ -207,8 +213,30 @@ h2 {
 }
 
 .timeline-item span {
+    font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.timeline-role {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+.timeline-place {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  margin: 2px 0;
+}
+
+.timeline-date {
+  display: block;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.timeline-desc {
+  color: var(--color-text);
 }
 
 /* ================= PROJECTS ================= */
