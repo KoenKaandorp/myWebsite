@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Particle Network Background (standalone)
+document.addEventListener("DOMContentLoaded", () => {
 
 (function () {
     const canvas = document.querySelector(".connecting-dots");
@@ -162,3 +163,6 @@ function resize() {
 
   animate();
 })();
+
+
+});
