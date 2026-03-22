@@ -412,6 +412,12 @@ h3 {
   text-decoration: none;
 }
 
+.contact-info p i {
+  margin-right: 8px;
+  color: var(--color-text);
+  width: 16px; /* keeps text aligned even if icons differ in width */
+}
+
 .contact-form {
   flex: 1;
 }
@@ -432,6 +438,7 @@ h3 {
 
 .contact-form input:focus,
 .contact-form textarea:focus {
+  font-family: var(--font-family-base);
   outline: none;
   border-color: var(--color-primary);
 }
