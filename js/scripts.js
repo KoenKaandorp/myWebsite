@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.querySelector(".connecting-dots");
     const ctx = canvas.getContext("2d");
     const hero = document.querySelector(".hero");
+    const repel = false;
 
   // Resize canvas
 function resize() {
@@ -82,8 +83,8 @@ function resize() {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 1;
-      this.vy = (Math.random() - 0.5) * 1;
+      this.vx = (Math.random() - 0.5) * 1.5;
+      this.vy = (Math.random() - 0.5) * 1.5;
       this.radius = Math.random() * 2 + 1;
     }
 
@@ -92,11 +93,11 @@ function resize() {
       this.y += this.vy;
 
       // Bounce off edges
-      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      if (this.x-this.radius < 0 || this.x+this.radius > canvas.width) this.vx *= -1;
+      if (this.y-this.radius < 0 || this.y+this.radius > canvas.height) this.vy *= -1;
 
       // Mouse interaction (repel)
-      if (mouse.x && mouse.y) {
+      if (mouse.x && mouse.y && repel) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -106,6 +107,19 @@ function resize() {
           this.y += dy / 10;
         }
       }
+
+      // Mouse interaction (attract)
+      if (mouse.x && mouse.y && !repel) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius) {
+          this.x -= dx / 75;
+          this.y -= dy / 75;
+        }
+      }
+
     }
 
     draw() {
@@ -118,7 +132,16 @@ function resize() {
 
   // Create particles
   const particles = [];
-  const PARTICLE_COUNT = 100;
+  const PARTICLE_COUNT = getParticleCount();
+
+  function getParticleCount() {
+    const area = canvas.width * canvas.height;
+
+    // tweak density (lower = more particles)
+    const density = 5000;
+
+    return Math.floor(area / density);
+  }
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push(new Particle());
@@ -147,6 +170,30 @@ function resize() {
         }
       }
     }
+
+      // Connect particles to mouse
+  if (mouse.x && mouse.y) {
+    const maxDistance = 120;
+
+    for (let i = 0; i < particles.length; i++) {
+      const dx = particles[i].x - mouse.x;
+      const dy = particles[i].y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < maxDistance) {
+        const opacity = 1 - dist / maxDistance;
+
+        ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`;
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+    }
+  }
+
   }
 
   // Animation loop
