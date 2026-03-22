@@ -53,10 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const hero = document.querySelector(".hero");
     const repel = false;
 
+
   // Resize canvas
 function resize() {
-  canvas.width = hero.offsetWidth;
-  canvas.height = hero.offsetHeight;
+  const rect = hero.getBoundingClientRect();
+
+  canvas.width = rect.width;
+  canvas.height = rect.height;
 }
   window.addEventListener("resize", resize);
   resize();
@@ -69,8 +72,10 @@ function resize() {
   };
 
   window.addEventListener("mousemove", (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
+const rect = canvas.getBoundingClientRect();
+
+mouse.x = e.clientX - rect.left;
+mouse.y = e.clientY - rect.top;
   });
 
   window.addEventListener("mouseleave", () => {
@@ -123,9 +128,24 @@ function resize() {
     }
 
     draw() {
+
+      let opacity = 0.6;
+
+      if (mouse.x && mouse.y) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        const maxDistance = 300;
+
+        if (dist < maxDistance) {
+          opacity = 0.6 + (1 - dist / maxDistance) * 0.8;
+        }
+      }
+
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgb(${particleColor})`;
+      ctx.fillStyle = `rgba(${particleColor}, ${opacity})`;
       ctx.fill();
     }
   }
@@ -147,54 +167,75 @@ function resize() {
     particles.push(new Particle());
   }
 
-  // Draw connecting lines
-  function connect() {
-    const maxDistance = 120;
+function connect() {
+  const maxParticleDistance = 120;
+  const mouseRadius = 300;
+  const mouseConnectRadius = 120;
+  if (!mouse.x || !mouse.y) return;
 
-    for (let a = 0; a < particles.length; a++) {
-      for (let b = a; b < particles.length; b++) {
-        const dx = particles[a].x - particles[b].x;
-        const dy = particles[a].y - particles[b].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+  for (let a = 0; a < particles.length; a++) {
+    for (let b = a; b < particles.length; b++) {
 
-        if (dist < maxDistance) {
-          const opacity = 1 - dist / maxDistance;
-
-          ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`;
-          ctx.lineWidth = 1;
-
-          ctx.beginPath();
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-      // Connect particles to mouse
-  if (mouse.x && mouse.y) {
-    const maxDistance = 120;
-
-    for (let i = 0; i < particles.length; i++) {
-      const dx = particles[i].x - mouse.x;
-      const dy = particles[i].y - mouse.y;
+      // Distance between particles
+      const dx = particles[a].x - particles[b].x;
+      const dy = particles[a].y - particles[b].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < maxDistance) {
-        const opacity = 1 - dist / maxDistance;
+      if (dist < maxParticleDistance) {
+
+        // Midpoint of line
+        const midX = (particles[a].x + particles[b].x) / 2;
+        const midY = (particles[a].y + particles[b].y) / 2;
+
+        // Distance to mouse
+        const dxMouse = midX - mouse.x;
+        const dyMouse = midY - mouse.y;
+        const mouseDist = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+        if (mouseDist > mouseRadius) continue;
+        const normalized = mouseDist / mouseRadius; 
+        let mouseFactor = Math.pow(1/normalized, 0.35);
+        mouseFactor = Math.min(mouseFactor, 1);
+        const particleFactor = 1 - dist / maxParticleDistance;
+        const opacity = mouseFactor * particleFactor;
 
         ctx.strokeStyle = `rgba(${particleColor}, ${opacity})`;
         ctx.lineWidth = 1;
 
         ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(mouse.x, mouse.y);
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
         ctx.stroke();
       }
     }
   }
 
+  if (mouse.x && mouse.y) {
+  for (let i = 0; i < particles.length; i++) {
+
+    const dx = particles[i].x - mouse.x;
+    const dy = particles[i].y - mouse.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist > mouseConnectRadius) continue;
+
+    // Your custom falloff
+    const normalized = Math.max(dist / mouseConnectRadius, 0.01);
+    let mouseFactor = Math.pow(1 / normalized, 0.35);
+
+    mouseFactor = Math.min(mouseFactor, 1);
+
+    ctx.strokeStyle = `rgba(${particleColor}, ${mouseFactor})`;
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+    ctx.moveTo(particles[i].x, particles[i].y);
+    ctx.lineTo(mouse.x, mouse.y);
+    ctx.stroke();
   }
+}
+}
+
 
   // Animation loop
   function animate() {
