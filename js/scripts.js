@@ -257,3 +257,21 @@ function connect() {
 
 
 });
+
+const navToggle = document.querySelector(".nav-toggle");
+const navMenu = document.querySelector(".nav-menu");
+
+navToggle.addEventListener("click", () => {
+  const isOpen = navMenu.classList.toggle("open");
+  navToggle.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", isOpen);
+});
+
+// Close menu when a link is clicked
+navMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("open");
+    navToggle.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", false);
+  });
+});

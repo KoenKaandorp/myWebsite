@@ -147,6 +147,64 @@ h3 {
   width: 100%;
 }
 
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate to X when open */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    padding: var(--space-16) var(--space-24);
+    gap: var(--space-16);
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-menu a {
+    margin-left: 0;
+  }
+}
+
 /* ================= HERO ================= */
 /* Canvas wrapper */
 .canvas {
@@ -423,7 +481,6 @@ h3 {
 }
 
 .contact-form {
-  padding-top: 62px;
   flex: 1;
 }
 
@@ -457,6 +514,7 @@ h3 {
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   transition: background 0.2s;
 }
