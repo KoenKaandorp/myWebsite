@@ -59,6 +59,10 @@ body {
   line-height: 1.6;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   width: 90%;
   max-width: var(--container-width);
@@ -419,21 +423,24 @@ h3 {
 }
 
 .contact-form {
+  padding-top: 62px;
   flex: 1;
 }
 
 .contact-form form {
   display: flex;
   flex-direction: column;
+  padding-top: var(--space-16)
 }
 
 .contact-form input,
 .contact-form textarea {
   margin-bottom: 12px;
-  padding: 3px;
+  padding: 10px 14px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
 }
 
 .contact-form input:focus,
@@ -444,7 +451,7 @@ h3 {
 }
 
 .contact-form button {
-  padding: 4px;
+  padding: 10px 14px;
   background: var(--color-primary);
   color: white;
   border: none;
