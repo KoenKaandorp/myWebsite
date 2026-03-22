@@ -169,7 +169,7 @@ mouse.y = e.clientY - rect.top;
 
 function connect() {
   const maxParticleDistance = 120;
-  const mouseRadius = 300;
+  const mouseRadius = 400;
   const mouseConnectRadius = 120;
   if (!mouse.x || !mouse.y) return;
 
@@ -193,8 +193,9 @@ function connect() {
         const mouseDist = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
         if (mouseDist > mouseRadius) continue;
-        const normalized = mouseDist / mouseRadius; 
-        let mouseFactor = Math.pow(1/normalized, 0.35);
+        let normalized = mouseDist / mouseRadius;
+        normalized = Math.min(Math.max(normalized, 0), 1);
+        let mouseFactor = Math.pow(1 - normalized, 0.5);
         mouseFactor = Math.min(mouseFactor, 1);
         const particleFactor = 1 - dist / maxParticleDistance;
         const opacity = mouseFactor * particleFactor;
