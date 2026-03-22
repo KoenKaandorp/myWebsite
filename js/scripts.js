@@ -129,7 +129,7 @@ mouse.y = e.clientY - rect.top;
 
     draw() {
 
-      let opacity = 0.6;
+      let opacity = 0.5;
 
       if (mouse.x && mouse.y) {
         const dx = this.x - mouse.x;
@@ -258,6 +258,7 @@ function connect() {
 
 });
 
+//hamburger menu
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 
@@ -274,4 +275,31 @@ navMenu.querySelectorAll("a").forEach(link => {
     navToggle.classList.remove("open");
     navToggle.setAttribute("aria-expanded", false);
   });
+});
+
+// contact form send button
+const contactForm = document.getElementById("contact-form");
+const formSuccess = document.getElementById("form-success");
+
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  contactForm.style.display = "none";
+  formSuccess.style.display = "block";
+  return;
+
+  const data = new FormData(contactForm);
+
+  const response = await fetch("https://formspree.io/f/MY_ID_HERE", {
+    method: "POST",
+    body: data,
+    headers: { Accept: "application/json" }
+  });
+
+  if (response.ok) {
+    contactForm.style.display = "none";
+    formSuccess.style.display = "block";
+  } else {
+    alert("Something went wrong. Please try again or email me directly.");
+  }
 });
