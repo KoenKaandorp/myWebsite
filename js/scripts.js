@@ -55,7 +55,7 @@ form.addEventListener("submit",async e=>{
   form.style.display="none";
   succ.style.display="block";
   // Swap this block for actual formspree call when ready:
-  // const r=await fetch("https://formspree.io/f/YOUR_ID",{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});
+  const r=await fetch("https://formspree.io/f/mykbwlgz",{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});
 });
 
 /* --- Particle canvas --- */
