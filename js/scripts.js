@@ -1,5 +1,5 @@
 /* --- Typewriter --- */
-const words = ["AI Engineer","Python Developer","Machine Learning Engineer","Problem Solver","Data Scientist"];
+const words = ["AI Engineer","Python Developer","Machine Learning Engineer","Problem Solver","Data Scientist", "Web Developer"];
 let wIdx=0,cIdx=0,del=false;
 const te=document.getElementById("changing-text");
 function type(){

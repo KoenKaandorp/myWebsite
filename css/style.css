@@ -322,7 +322,7 @@ body::before {
 }
 
 .btn-primary:hover {
-    background: transparent;
+    background: var(--cyan-dim);
     color: var(--cyan);
     box-shadow: inset 0 0 0 1px var(--cyan);
 }
