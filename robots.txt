@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /exampleproject.html
+
+Sitemap: https://koenkaandorp.nl/sitemap.xml
