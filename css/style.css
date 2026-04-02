@@ -819,6 +819,15 @@ section {
     line-height: 1.9;
 }
 
+.about-text a.subtle-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.about-text a.subtle-link:hover {
+    text-decoration: underline;
+}
+
 .about-text p strong {
     color: var(--text-bright);
     font-weight: 600;

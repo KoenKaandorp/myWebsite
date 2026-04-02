@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Koen Kaandorp — AI Engineer & Data Scientist</title>
-  <meta name="description" content="AI/ML Engineer & Python Developer specializing in machine learning, deep learning, and data science.">
+  <meta name="description"
+    content="Koen Kaandorp — MSc AI & Data Science student at TU/e, building machine learning systems and Python tools. Based in Eindhoven.">
   <meta name="theme-color" content="#060D1A">
+  <meta name="author" content="Koen Kaandorp">
   <link rel="canonical" href="https://koenkaandorp.nl">
   <link rel="icon" href="media/laptop-solid.ico" type="image/x-icon">
 
@@ -13,366 +16,382 @@
   <meta property="og:description" content="AI/ML Engineer & Python Developer">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://koenkaandorp.nl">
+  <meta property="og:image" content="https://koenkaandorp.nl/media/koenkaandorp.jpg">
 
   <link rel="stylesheet" href="css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
 </head>
+
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo">Koen Kaandorp</a>
-    <ul class="nav-links">
-      <li><a href="#experience" data-num="01">Experience</a></li>
-      <li><a href="#projects"   data-num="02">Projects</a></li>
-      <li><a href="#skills"     data-num="03">Tech Stack</a></li>
-      <li><a href="#about"      data-num="04">About</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Get in touch</a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Koen Kaandorp</a>
+      <ul class="nav-links">
+        <li><a href="#experience" data-num="01">Experience</a></li>
+        <li><a href="#projects" data-num="02">Projects</a></li>
+        <li><a href="#skills" data-num="03">Tech Stack</a></li>
+        <li><a href="#about" data-num="04">About</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#experience">01 — Experience</a>
+    <a href="#projects">02 — Projects</a>
+    <a href="#skills">03 — Tech Stack</a>
+    <a href="#about">04 — About</a>
+    <a href="#contact">05 — Contact</a>
   </div>
-</nav>
-<div class="mobile-nav" id="mobile-nav">
-  <a href="#experience">01 — Experience</a>
-  <a href="#projects">02 — Projects</a>
-  <a href="#skills">03 — Tech Stack</a>
-  <a href="#about">04 — About</a>
-  <a href="#contact">05 — Contact</a>
-</div>
 
-<!-- ===== HERO ===== -->
-<section id="home" class="hero">
-  <div class="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
-  <div class="container">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Based in Eindhoven, Netherlands</p>
-      <h1>Building intelligent<br>systems that <em>work<br>with people</em></h1>
-      <p class="hero-sub">I am a <span class="type-wrap"><span id="changing-text"></span></span></p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary">View my work</a>
-        <a href="#contact" class="btn-ghost">Let's connect</a>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll">Scroll</div>
-</section>
-
-<!-- ===== EXPERIENCE ===== -->
-<section id="experience" class="experience">
-  <div class="container">
-    <p class="section-label reveal">01 — Background</p>
-    <h2 class="section-title reveal reveal-delay-1">Experience</h2>
-
-    <div class="experience-tabs reveal reveal-delay-2">
-      <button class="tab-btn active" data-tab="education">Education</button>
-      <button class="tab-btn" data-tab="work">Work</button>
-      <button class="tab-btn" data-tab="volunteer">Volunteer</button>
-    </div>
-
-    <!-- Education -->
-    <div class="tab-panel active" id="tab-education">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">2024<br>Present</div>
-          <div class="tl-body">
-            <p class="tl-role">MSc Data Science & AI</p>
-            <p class="tl-place">Eindhoven University of Technology</p>
-            <p class="tl-desc">Combining advanced data analytics techniques and AI methods to build systems that behave intelligently, responsibly, transparently, and explainably.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">2020<br>2024</div>
-          <div class="tl-body">
-            <p class="tl-role">BSc Psychology & Technology</p>
-            <p class="tl-place">Eindhoven University of Technology</p>
-            <p class="tl-desc">Studying how technology influences people and how psychological knowledge can make technology work with people.</p>
-          </div>
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Based in Eindhoven, Netherlands</p>
+        <h1>Building intelligent<br>systems that <em>work<br>with people</em></h1>
+        <p class="hero-sub">I am a <span class="type-wrap"><span id="changing-text"></span></span></p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View my work</a>
+          <a href="#contact" class="btn-ghost">Let's connect</a>
         </div>
       </div>
     </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
 
-    <!-- Work -->
-    <div class="tab-panel" id="tab-work">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">2023</div>
-          <div class="tl-body">
-            <p class="tl-role">Sales</p>
-            <p class="tl-place">The Sales Unit</p>
-            <p class="tl-desc">Door-to-door fundraising sales for KiKa charity.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">2020<br>2023</div>
-          <div class="tl-body">
-            <p class="tl-role">Tutor</p>
-            <p class="tl-place">Private & Group</p>
-            <p class="tl-desc">Private and group tutoring in Mathematics and Physics.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">2016<br>2019</div>
-          <div class="tl-body">
-            <p class="tl-role">Farm Assistant</p>
-            <p class="tl-place">Vee en Veldlust</p>
-            <p class="tl-desc">Assisting in the care and management of dairy cattle.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <p class="section-label reveal">01 — Background</p>
+      <h2 class="section-title reveal reveal-delay-1">Experience</h2>
 
-    <!-- Volunteer -->
-    <div class="tab-panel" id="tab-volunteer">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-date">2023<br>2024</div>
-          <div class="tl-body">
-            <p class="tl-role">Treasurer</p>
-            <p class="tl-place">Studentproof</p>
-            <p class="tl-desc">Treasurer of the student Jazz association — bookkeeping, policy development, and activity coordination.</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">2022<br>2024</div>
-          <div class="tl-body">
-            <p class="tl-role">Chairman & External Relations</p>
-            <p class="tl-place">Intermate AFExCie</p>
-            <p class="tl-desc">Led the Annual Foreign Exchange Committee of Study Association Intermate, managing external partnerships and cross-cultural programs.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== PROJECTS ===== -->
-<section id="projects">
-  <div class="container">
-    <p class="section-label reveal">02 — Portfolio</p>
-    <h2 class="section-title reveal reveal-delay-1">Projects</h2>
-
-    <div class="projects-grid">
-
-      <a href="exampleproject.html" class="project-card reveal">
-        <div class="project-img-placeholder">[ Project Preview ]</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">ML</span>
-          </div>
-          <h3 class="project-title">Example Project</h3>
-          <p class="project-desc">A brief description of what this project does and the problem it solves. Replace with your actual project details.</p>
-          <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <a href="exampleproject.html" class="project-card reveal reveal-delay-1">
-        <div class="project-img-placeholder">[ Project Preview ]</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">PyTorch</span>
-            <span class="project-tag">Data</span>
-          </div>
-          <h3 class="project-title">Example Project</h3>
-          <p class="project-desc">A brief description of what this project does and the problem it solves. Replace with your actual project details.</p>
-          <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-      <a href="exampleproject.html" class="project-card reveal reveal-delay-2">
-        <div class="project-img-placeholder">[ Project Preview ]</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Web</span>
-            <span class="project-tag">AI</span>
-          </div>
-          <h3 class="project-title">Example Project</h3>
-          <p class="project-desc">A brief description of what this project does and the problem it solves. Replace with your actual project details.</p>
-          <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== SKILLS ===== -->
-<section id="skills" class="skills">
-  <div class="container">
-    <div class="skills-layout">
-
-      <div class="skills-left reveal">
-        <p class="section-label">03 — Toolkit</p>
-        <h2 class="section-title">Tech Stack</h2>
-        <p class="section-intro">
-          From data pipelines to deployable models, I work across the full technical stack. My background in Psychology gives me an edge in building systems that are not just smart but also usable.
-        </p>
+      <div class="experience-tabs reveal reveal-delay-2">
+        <button class="tab-btn active" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="work">Work</button>
+        <button class="tab-btn" data-tab="volunteer">Volunteer</button>
       </div>
 
-      <div class="skills-right">
-        <div class="skill-group reveal">
-          <p class="skill-group-title"><i class="fas fa-code"></i> Languages</p>
-          <div class="skill-pills">
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">Java</span>
-            <span class="skill-pill">C++</span>
-            <span class="skill-pill">HTML</span>
-            <span class="skill-pill">CSS</span>
-          </div>
-        </div>
-        <div class="skill-group reveal reveal-delay-1">
-          <p class="skill-group-title"><i class="fas fa-brain"></i> AI / ML</p>
-          <div class="skill-pills">
-            <span class="skill-pill">PyTorch</span>
-            <span class="skill-pill">TensorFlow</span>
-            <span class="skill-pill">Scikit-learn</span>
-            <span class="skill-pill">NumPy</span>
-            <span class="skill-pill">Pandas</span>
-          </div>
-        </div>
-        <div class="skill-group reveal reveal-delay-2">
-          <p class="skill-group-title"><i class="fas fa-palette"></i> Creative</p>
-          <div class="skill-pills">
-            <span class="skill-pill">Photoshop</span>
-            <span class="skill-pill">Lightroom</span>
-            <span class="skill-pill">Premiere Pro</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <div class="container">
-    <div class="about-layout">
-
-      <div class="about-img-wrap reveal">
-        <picture>
-          <source srcset="media/koenkaandorp.webp" type="image/webp">
-          <img src="media/koenkaandorp.jpg" alt="Portrait of Koen Kaandorp" loading="lazy" decoding="async">
-        </picture>
-      </div>
-
-      <div class="about-text reveal reveal-delay-1">
-        <p class="section-label">04 — The person</p>
-        <h2 class="section-title">About me</h2>
-        <p>
-          I'm a master's student in <strong>Data Science & AI</strong> at Eindhoven University of Technology, with a bachelor's degree in <strong>Psychology & Technology</strong>. I'm not just interested in building intelligent systems, but in making them work <em>with people</em>.
-        </p>
-        <p>
- Outside of code you'll find me playing the <strong>piano</strong>, lifting weights, or cooking a good meal.
-        </p>
-
-        <div class="about-facts">
-          <div class="fact">
-            <div class="fact-num">2+</div>
-            <div class="fact-label">Years ML experience</div>
-          </div>
-          <div class="fact">
-            <div class="fact-num">BSc</div>
-            <div class="fact-label">Psychology & Tech</div>
-          </div>
-          <div class="fact">
-            <div class="fact-num">MSc</div>
-            <div class="fact-label">Data Science & AI</div>
-          </div>
-          <div class="fact">
-            <div class="fact-num">6+</div>
-            <div class="fact-label">Coding languages</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="contact">
-  <div class="container">
-    <div class="contact-layout">
-
-      <div class="contact-left reveal">
-        <p class="section-label">05 — Get in touch</p>
-        <h2 class="section-title">Contact</h2>
-        <p class="section-intro">
-          Whether you have a project in mind, a question, or just want to say hello, my inbox is always open.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:koenkaandorp@gmail.com" class="contact-link">
-            <i class="fas fa-envelope"></i>
-            <span class="contact-link-label">koenkaandorp@gmail.com</span>
-          </a>
-          <a href="https://github.com/koenkaandorp" target="_blank" class="contact-link">
-            <i class="fab fa-github"></i>
-            <span class="contact-link-label">github.com/koenkaandorp</span>
-          </a>
-          <a href="https://linkedin.com/in/koen-kaandorp" target="_blank" class="contact-link">
-            <i class="fab fa-linkedin"></i>
-            <span class="contact-link-label">linkedin.com/in/koen-kaandorp</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal reveal-delay-1">
-        <div class="form-success" id="form-success">
-          ✓ Message sent — I'll get back to you soon.
-        </div>
-        <form id="contact-form" class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="f-name">Name</label>
-              <input id="f-name" type="text" name="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="f-email">Email</label>
-              <input id="f-email" type="email" name="email" placeholder="you@example.com" required>
+      <!-- Education -->
+      <div class="tab-panel active" id="tab-education">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2024<br>Present</div>
+            <div class="tl-body">
+              <p class="tl-role">MSc Data Science & AI</p>
+              <p class="tl-place">Eindhoven University of Technology</p>
+              <p class="tl-desc">Combining advanced data analytics techniques and AI methods to build systems that
+                behave intelligently, responsibly, transparently, and explainably.</p>
             </div>
           </div>
-          <div class="form-group">
-            <label for="f-subject">Subject</label>
-            <input id="f-subject" type="text" name="subject" placeholder="What's this about?" required>
+          <div class="tl-item">
+            <div class="tl-date">2020<br>2024</div>
+            <div class="tl-body">
+              <p class="tl-role">BSc Psychology & Technology</p>
+              <p class="tl-place">Eindhoven University of Technology</p>
+              <p class="tl-desc">Studying how technology influences people and how psychological knowledge can make
+                technology work with people.</p>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="f-message">Message</label>
-            <textarea id="f-message" name="message" placeholder="Your message…" rows="5" required></textarea>
+        </div>
+      </div>
+
+      <!-- Work -->
+      <div class="tab-panel" id="tab-work">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2023</div>
+            <div class="tl-body">
+              <p class="tl-role">Sales</p>
+              <p class="tl-place">The Sales Unit</p>
+              <p class="tl-desc">Door-to-door fundraising sales for KiKa charity.</p>
+            </div>
           </div>
-          <button type="submit" class="btn-primary" style="width:fit-content;">Send message</button>
-        </form>
+          <div class="tl-item">
+            <div class="tl-date">2020<br>2023</div>
+            <div class="tl-body">
+              <p class="tl-role">Tutor</p>
+              <p class="tl-place">Private & Group</p>
+              <p class="tl-desc">Private and group tutoring in Mathematics and Physics.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2016<br>2019</div>
+            <div class="tl-body">
+              <p class="tl-role">Farm Assistant</p>
+              <p class="tl-place">Vee en Veldlust</p>
+              <p class="tl-desc">Assisting in the care and management of dairy cattle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volunteer -->
+      <div class="tab-panel" id="tab-volunteer">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2023<br>2024</div>
+            <div class="tl-body">
+              <p class="tl-role">Treasurer</p>
+              <p class="tl-place">Studentproof</p>
+              <p class="tl-desc">Treasurer of the student Jazz association — bookkeeping, policy development, and
+                activity coordination.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2022<br>2024</div>
+            <div class="tl-body">
+              <p class="tl-role">Chairman & External Relations</p>
+              <p class="tl-place">Intermate AFExCie</p>
+              <p class="tl-desc">Led the Annual Foreign Exchange Committee of Study Association Intermate, managing
+                external partnerships and cross-cultural programs.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-inner">
-    <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
-    <div class="footer-social">
-      <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:koenkaandorp@gmail.com"><i class="fas fa-envelope"></i></a>
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label reveal">02 — Portfolio</p>
+      <h2 class="section-title reveal reveal-delay-1">Projects</h2>
+
+      <div class="projects-grid">
+
+        <a href="exampleproject.html" class="project-card reveal">
+          <div class="project-img-placeholder">[ Project Preview ]</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">ML</span>
+            </div>
+            <h3 class="project-title">Example Project</h3>
+            <p class="project-desc">A brief description of what this project does and the problem it solves. Replace
+              with your actual project details.</p>
+            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="exampleproject.html" class="project-card reveal reveal-delay-1">
+          <div class="project-img-placeholder">[ Project Preview ]</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">PyTorch</span>
+              <span class="project-tag">Data</span>
+            </div>
+            <h3 class="project-title">Example Project</h3>
+            <p class="project-desc">A brief description of what this project does and the problem it solves. Replace
+              with your actual project details.</p>
+            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="exampleproject.html" class="project-card reveal reveal-delay-2">
+          <div class="project-img-placeholder">[ Project Preview ]</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">Web</span>
+              <span class="project-tag">AI</span>
+            </div>
+            <h3 class="project-title">Example Project</h3>
+            <p class="project-desc">A brief description of what this project does and the problem it solves. Replace
+              with your actual project details.</p>
+            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="skills-layout">
+
+        <div class="skills-left reveal">
+          <p class="section-label">03 — Toolkit</p>
+          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-intro">
+            From data pipelines to deployable models, I work across the full technical stack. My background in
+            Psychology gives me an edge in building systems that are not just smart but also usable.
+          </p>
+        </div>
+
+        <div class="skills-right">
+          <div class="skill-group reveal">
+            <p class="skill-group-title"><i class="fas fa-code"></i> Languages</p>
+            <div class="skill-pills">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">Java</span>
+              <span class="skill-pill">C++</span>
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">CSS</span>
+            </div>
+          </div>
+          <div class="skill-group reveal reveal-delay-1">
+            <p class="skill-group-title"><i class="fas fa-brain"></i> AI / ML</p>
+            <div class="skill-pills">
+              <span class="skill-pill">PyTorch</span>
+              <span class="skill-pill">TensorFlow</span>
+              <span class="skill-pill">Scikit-learn</span>
+              <span class="skill-pill">NumPy</span>
+              <span class="skill-pill">Pandas</span>
+            </div>
+          </div>
+          <div class="skill-group reveal reveal-delay-2">
+            <p class="skill-group-title"><i class="fas fa-palette"></i> Creative</p>
+            <div class="skill-pills">
+              <span class="skill-pill">Photoshop</span>
+              <span class="skill-pill">Lightroom</span>
+              <span class="skill-pill">Premiere Pro</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-layout">
+
+        <div class="about-img-wrap reveal">
+          <picture>
+            <source srcset="media/koenkaandorp.webp" alt="Portrait of Koen Kaandorp" type="image/webp">
+            <img src="media/koenkaandorp.jpg" alt="Portrait of Koen Kaandorp" loading="lazy" decoding="async">
+          </picture>
+        </div>
+
+        <div class="about-text reveal reveal-delay-1">
+          <p class="section-label">04 — The person</p>
+          <h2 class="section-title">About me</h2>
+          <p>
+            I'm a master's student in <strong>Data Science & AI</strong> at <a href="https://www.tue.nl" target="_blank" rel="noopener noreferrer"class="subtle-link">Eindhoven University of Technology</a>, with a
+            bachelor's degree in <strong>Psychology & Technology</strong>. I'm not just interested in building
+            intelligent systems, but in making them work <em>with people</em>.
+          </p>
+          <p>
+            Outside of code you'll find me playing the <strong>piano</strong>, lifting weights, or cooking a good meal.
+          </p>
+
+          <div class="about-facts">
+            <div class="fact">
+              <div class="fact-num">2+</div>
+              <div class="fact-label">Years ML experience</div>
+            </div>
+            <div class="fact">
+              <div class="fact-num">BSc</div>
+              <div class="fact-label">Psychology & Tech</div>
+            </div>
+            <div class="fact">
+              <div class="fact-num">MSc</div>
+              <div class="fact-label">Data Science & AI</div>
+            </div>
+            <div class="fact">
+              <div class="fact-num">6+</div>
+              <div class="fact-label">Coding languages</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-layout">
+
+        <div class="contact-left reveal">
+          <p class="section-label">05 — Get in touch</p>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-intro">
+            Whether you have a project in mind, a question, or just want to say hello, my inbox is always open.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:koenkaandorp@gmail.com" class="contact-link">
+              <i class="fas fa-envelope"></i>
+              <span class="contact-link-label">koenkaandorp@gmail.com</span>
+            </a>
+            <a href="https://github.com/koenkaandorp" target="_blank" class="contact-link">
+              <i class="fab fa-github"></i>
+              <span class="contact-link-label">github.com/koenkaandorp</span>
+            </a>
+            <a href="https://linkedin.com/in/koen-kaandorp" target="_blank" class="contact-link">
+              <i class="fab fa-linkedin"></i>
+              <span class="contact-link-label">linkedin.com/in/koen-kaandorp</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="form-success" id="form-success">
+            ✓ Message sent — I'll get back to you soon.
+          </div>
+          <form id="contact-form" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name">Name</label>
+                <input id="f-name" type="text" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email</label>
+                <input id="f-email" type="email" name="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-subject">Subject</label>
+              <input id="f-subject" type="text" name="subject" placeholder="What's this about?" required>
+            </div>
+            <div class="form-group">
+              <label for="f-message">Message</label>
+              <textarea id="f-message" name="message" placeholder="Your message…" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:fit-content;">Send message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:koenkaandorp@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
 
 
 
-<script src="js/scripts.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
+
 </html>
