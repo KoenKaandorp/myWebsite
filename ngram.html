@@ -64,12 +64,12 @@
             N-Gram Language Model
           </h1>
           <p class="proj-subtitle reveal reveal-delay-3">
-            A from-scratch n-gram language model trained on the Lord of the Rings trilogy — built up from bigrams to a full backoff model with Kneser-Ney smoothing, and deployed as an interactive text generator.
+            A from scratch n-gram language model trained on the Lord of the Rings trilogy. Built up from bigrams to a full backoff model with Kneser-Ney smoothing, and deployed as an interactive text generator.
           </p>
           <div class="proj-meta reveal reveal-delay-3">
             <div class="proj-meta-item">
               <span class="proj-meta-label">Year</span>
-              <span class="proj-meta-value">2024</span>
+              <span class="proj-meta-value">2026</span>
             </div>
             <div class="proj-meta-item">
               <span class="proj-meta-label">Type</span>
@@ -91,14 +91,7 @@
         </div>
 
         <div class="proj-hero-img reveal reveal-delay-2">
-          <!-- EDIT: Replace with your project image/screenshot -->
-          <!-- Option A: use an image -->
-          <!-- <img src="media/your-project-screenshot.png" alt="Project screenshot"> -->
-          <!-- Option B: placeholder (remove when you have a real image) -->
-          <div class="proj-img-placeholder">
-            <i class="fas fa-book-open"></i>
-            <span>ngram.koenkaandorp.nl</span>
-          </div>
+          <img src="media/ngram_website.webp" alt="Project screenshot">
         </div>
       </div>
     </div>
@@ -115,107 +108,16 @@
         <section class="proj-section reveal">
           <h2 class="proj-section-title">Overview</h2>
           <p>
-            This project is a pure-Python implementation of n-gram language models, trained on J.R.R. Tolkien's
-            Lord of the Rings trilogy. Starting from the simplest possible language model — a bigram — the project
-            builds up through trigrams and arbitrary n-grams, then layers on two important real-world improvements:
-            backoff and Kneser-Ney smoothing.
+            This project is a Python implementation of n-gram language models, trained on the
+            Lord of the Rings trilogy. Starting from the simplest version, a bigram, the project
+            builds up throug n-grams, then layers on three important improvements:
+            Pruning, Backoff and Kneser-Ney smoothing.
           </p>
           <p>
-            The end result is a text generator that produces new "Tolkien-esque" sentences entirely from statistical
-            patterns in the source text — no neural networks involved. You can try it yourself at
-            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="subtle-link" style="color: var(--cyan);">ngram.koenkaandorp.nl</a>.
+            The end result is a text generator that produces new Tolkien like sentences. You can try it yourself at
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="subtle-link" style="color: var(--cyan);">Ngram</a>.
           </p>
         </section>
-
-        <!-- PROBLEM -->
-        <section class="proj-section reveal">
-          <h2 class="proj-section-title">The Problem</h2>
-          <p>
-            N-gram models are one of the cornerstones of classical NLP — predating neural language models by
-            decades — yet they're often only taught at the surface level: "count word pairs, compute probabilities,
-            done." The real challenge is what happens next. A naive n-gram model breaks down immediately on
-            unseen word sequences, which are inevitable in any reasonably-sized vocabulary.
-          </p>
-          <p>
-            This project set out to build the full stack from scratch: from raw text tokenisation all the way
-            to a smoothed backoff model, without relying on any NLP libraries. The goal was to deeply understand
-            what these models actually do before moving on to the neural successors that replaced them.
-          </p>
-        </section>
-
-        <!-- APPROACH -->
-        <section class="proj-section reveal">
-          <h2 class="proj-section-title">Approach</h2>
-          <p>
-            The project is structured as a progressive build, with each stage adding a meaningful capability
-            over the last.
-          </p>
-          <ul class="proj-list">
-            <li><strong style="color: var(--text-bright);">Tokenisation</strong> — A custom tokeniser handles sentence boundary tokens
-              (<code style="font-family: var(--mono); color: var(--cyan); font-size: 0.85em;">&lt;s&gt;</code> /
-              <code style="font-family: var(--mono); color: var(--cyan); font-size: 0.85em;">&lt;/s&gt;</code>),
-              punctuation, and lowercasing, turning the raw trilogy text into a clean sequence of tokens.</li>
-            <li><strong style="color: var(--text-bright);">N-gram frequency tables</strong> — For a given <em>n</em>, the model counts
-              how often each (n-1)-word context is followed by each word, building a nested frequency dictionary.
-              Low-frequency entries are pruned to keep the model compact.</li>
-            <li><strong style="color: var(--text-bright);">Backoff model</strong> — When a context hasn't been seen at order <em>n</em>,
-              the model gracefully falls back to the (n-1)-gram model, down to a unigram baseline. This solves the
-              zero-probability problem without discarding any information.</li>
-            <li><strong style="color: var(--text-bright);">Kneser-Ney smoothing</strong> — The most sophisticated variant replaces raw
-              continuation counts with Kneser-Ney estimates: a word is weighted not just by how often it appears,
-              but by how many distinct contexts it completes. This gives much better probability estimates for rare
-              words.</li>
-            <li><strong style="color: var(--text-bright);">Model serialisation</strong> — Both the standard and backoff models can be
-              saved to and loaded from JSON, making the trained model portable and usable in the deployed web app.</li>
-          </ul>
-        </section>
-
-        <!-- RESULTS -->
-        <section class="proj-section reveal">
-          <h2 class="proj-section-title">Results</h2>
-          <p>
-            The backoff model with Kneser-Ney smoothing produces noticeably more coherent output than the plain
-            n-gram baseline. At higher n-values the model essentially memorises phrases from the trilogy; at lower
-            values it becomes more creative but less grammatical. The sweet spot for fluent-sounding generation
-            sits around n&nbsp;=&nbsp;5–7.
-          </p>
-          <p>
-            The live demo at <a href="https://ngram.koenkaandorp.nl" target="_blank" class="subtle-link" style="color: var(--cyan);">ngram.koenkaandorp.nl</a> lets
-            you experiment with different n values and seed phrases to see this tradeoff in action.
-          </p>
-
-          <div class="proj-stats">
-            <div class="proj-stat">
-              <div class="proj-stat-num">3</div>
-              <div class="proj-stat-label">Books of training data</div>
-            </div>
-            <div class="proj-stat">
-              <div class="proj-stat-num">10</div>
-              <div class="proj-stat-label">Max n-gram order</div>
-            </div>
-            <div class="proj-stat">
-              <div class="proj-stat-num">3</div>
-              <div class="proj-stat-label">Model variants</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- REFLECTIONS -->
-        <section class="proj-section reveal">
-          <h2 class="proj-section-title">Reflections</h2>
-          <p>
-            Building this from scratch made the limitations of n-gram models very concrete. The core issue isn't
-            the lack of smoothing — it's the lack of any notion of meaning. The model has no idea that "Frodo"
-            and "hobbit" are related, or that "the ring" is the central object of the entire corpus. It just
-            counts sequences.
-          </p>
-          <p>
-            That limitation is exactly what makes this a useful stepping stone. Neural language models solve it
-            by learning distributed representations of words — embeddings — which is the natural next project
-            after fully understanding what statistical models can and can't do.
-          </p>
-        </section>
-
       </article>
 
       <!-- ===== RIGHT: SIDEBAR ===== -->
@@ -225,8 +127,8 @@
           <h3 class="proj-sidebar-heading">Tech Stack</h3>
           <div class="skill-pills" style="gap: 0.5rem;">
             <span class="skill-pill">Python</span>
-            <span class="skill-pill">collections</span>
-            <span class="skill-pill">functools</span>
+            <span class="skill-pill">html</span>
+            <span class="skill-pill">JavaScript</span>
             <span class="skill-pill">JSON</span>
             <span class="skill-pill">Jupyter</span>
           </div>
