@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta-Learning for Neural Fields — Koen Kaandorp</title>
+  <meta name="description" content="Meta-learning framework for implicit neural representations — combining MAML, NeRV, SIREN and GradNCP coordinate sampling for fast video and image reconstruction.">
+  <meta name="theme-color" content="#060D1A">
+  <meta name="author" content="Koen Kaandorp">
+  <link rel="icon" href="media/laptop-solid.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Koen Kaandorp</a>
+      <ul class="nav-links">
+        <li><a href="index.html#experience" data-num="01">Experience</a></li>
+        <li><a href="index.html#projects" data-num="02">Projects</a></li>
+        <li><a href="index.html#skills" data-num="03">Tech Stack</a></li>
+        <li><a href="index.html#about" data-num="04">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html#experience">01 — Experience</a>
+    <a href="index.html#projects">02 — Projects</a>
+    <a href="index.html#skills">03 — Tech Stack</a>
+    <a href="index.html#about">04 — About</a>
+    <a href="index.html#contact">05 — Contact</a>
+  </div>
+
+  <!-- ===== PROJECT HERO ===== -->
+  <section class="proj-hero">
+    <div class="container">
+      <a href="index.html#projects" class="proj-back reveal">
+        <i class="fas fa-arrow-left"></i> Back to projects
+      </a>
+
+      <div class="proj-hero-layout">
+        <div class="proj-hero-text">
+          <div class="proj-tags reveal reveal-delay-1">
+            <span class="project-tag">PyTorch</span>
+            <span class="project-tag">Meta-Learning</span>
+            <span class="project-tag">Neural Fields</span>
+            <span class="project-tag">Computer Vision</span>
+          </div>
+          <h1 class="proj-title reveal reveal-delay-2">
+            Meta-Learning for Neural Fields
+          </h1>
+          <p class="proj-subtitle reveal reveal-delay-3">
+            A meta-learning framework for implicit neural representations — combining MAML, NeRV and SIREN decoders with gradient-guided coordinate sampling to efficiently reconstruct images and video from very few pixels.
+          </p>
+          <div class="proj-meta reveal reveal-delay-3">
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Year</span>
+              <span class="proj-meta-value">2024</span>
+            </div>
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Type</span>
+              <span class="proj-meta-value">Academic</span>
+            </div>
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Status</span>
+              <span class="proj-meta-value proj-status-done">Completed</span>
+            </div>
+          </div>
+          <div class="proj-actions reveal reveal-delay-3">
+            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" class="btn-primary">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-hero-img reveal reveal-delay-2">
+          <div class="proj-img-placeholder">
+            <i class="fas fa-photo-video"></i>
+            <span>Neural Field Reconstruction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT BODY ===== -->
+  <main class="proj-body">
+    <div class="container proj-content-grid">
+
+      <article class="proj-main">
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Overview</h2>
+          <p>
+            Implicit neural representations (INRs) — or neural fields — are neural networks that learn to represent a signal (an image, a video, a sound) as a continuous function of coordinates. Instead of storing pixel values directly, the network learns a mapping from coordinates to signal values, essentially compressing the signal into its weights.
+          </p>
+          <p>
+            This project implements a full meta-learning pipeline on top of neural fields: rather than training each network from scratch per signal, a meta-learner finds an initialisation that can be quickly adapted to any new signal in just a handful of gradient steps. The codebase supports two decoder architectures (SIREN and NeRV), multiple data modalities (images, video, audio, manifold), and a gradient-guided sampling strategy that intelligently selects which coordinates to use during inner-loop adaptation.
+          </p>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">The Problem</h2>
+          <p>
+            Training a separate neural field from scratch for every signal is expensive and slow. Meta-learning offers an elegant solution: if we can find a good shared weight initialisation across many signals, each new signal only needs a small number of inner gradient steps to fit — dramatically reducing per-signal compute.
+          </p>
+          <p>
+            A second challenge is <em>what coordinates to use</em> during adaptation. Using all coordinates is slow, and random subsampling wastes budget on easy, low-information pixels. The question is whether we can use gradient information to prioritise the coordinates where adaptation will learn the most.
+          </p>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Approach</h2>
+          <p>
+            The project is structured around three main components that can be combined modularly.
+          </p>
+          <ul class="proj-list">
+            <li><strong style="color: var(--text-bright);">Meta-learning with MAML</strong> — The outer loop trains a shared initialisation using Model-Agnostic Meta-Learning (MAML). Each inner loop takes a small number of gradient steps to adapt the shared parameters to a specific signal, and the outer loss is computed on the full signal after adaptation. A bootstrapped variant of MAML (<code style="font-family:var(--mono);color:var(--cyan);font-size:.85em">maml_bootstrap_param</code>) was also implemented and evaluated.</li>
+            <li><strong style="color: var(--text-bright);">Two decoder architectures</strong> — SIREN uses sinusoidal activations with a carefully designed initialisation scheme, making it well-suited for signals with fine structure. NeRV is a convolutional video decoder that takes a frame index as input and outputs the full frame via a stack of upsampling blocks — a fundamentally different approach that is much faster for video. Both are wrapped in a <code style="font-family:var(--mono);color:var(--cyan);font-size:.85em">MetaWrapper</code> that handles coordinate generation, sampling, and MSE loss computation uniformly across modalities.</li>
+            <li><strong style="color: var(--text-bright);">GradNCP coordinate sampling</strong> — Instead of random subsampling, GradNCP selects the coordinates where the gradient of the last-layer weights is largest. For SIREN this is computed as the outer product of the penultimate feature vector and the reconstruction error; for NeRV it uses the Jacobian approximation via tanh derivatives. Only the top fraction (controlled by <code style="font-family:var(--mono);color:var(--cyan);font-size:.85em">data_ratio</code>) of coordinates are used in the inner loop, focusing adaptation budget on the most informative locations.</li>
+            <li><strong style="color: var(--text-bright);">SPO fine-tuning stage</strong> — After meta-training, a second training phase (Split Parameter Optimisation) fine-tunes only the final layer of the network per-signal while keeping the shared trunk frozen. This achieves strong single-signal accuracy without disturbing the meta-initialisation.</li>
+            <li><strong style="color: var(--text-bright);">Experiment tracking with W&B</strong> — All runs were tracked with Weights & Biases, logging inner loss, batch outer loss, and average outer loss at each step. Multiple runs were conducted with different MAML configurations to compare convergence behaviour.</li>
+          </ul>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Results</h2>
+          <p>
+            The meta-trained models successfully converge to shared initialisations that can be quickly adapted per signal. PSNR (Peak Signal-to-Noise Ratio) is used as the primary reconstruction metric — evaluated both inside (in-context) and outside (out-of-context) the inner adaptation loop. The GradNCP sampling strategy consistently yields stronger adaptation than random sampling at the same coordinate budget, confirming that gradient-guided selection of coordinates is worthwhile even with as little as 25% of all pixels.
+          </p>
+
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <div class="proj-stat-num">25%</div>
+              <div class="proj-stat-label">Pixel budget (GradNCP)</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">16</div>
+              <div class="proj-stat-label">Inner adapt steps</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">2</div>
+              <div class="proj-stat-label">Decoder architectures</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">4</div>
+              <div class="proj-stat-label">Data modalities</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Reflections</h2>
+          <p>
+            The most interesting design tension in this project is the tradeoff between the two decoder architectures. SIREN is elegant and general — one network handles any modality through coordinate inputs — but is slow for video because it must process every spatial coordinate individually. NeRV flips the design: it treats frames as atomic units and uses convolutional upsampling to decode from a single time index, making it much faster but sacrificing the modality-agnostic property.
+          </p>
+          <p>
+            GradNCP's coordinate selection is computationally cheap at inference time once the penultimate features are available, and the improvement over random sampling shows that the gradient signal is genuinely informative. An interesting extension would be to combine adaptive sampling with uncertainty estimates from the network itself — selecting coordinates where the model is both uncertain and the gradient is large.
+          </p>
+        </section>
+
+      </article>
+
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="proj-sidebar">
+
+        <div class="proj-sidebar-card reveal">
+          <h3 class="proj-sidebar-heading">Tech Stack</h3>
+          <div class="skill-pills" style="gap: 0.5rem;">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">einops</span>
+            <span class="skill-pill">torchvision</span>
+            <span class="skill-pill">W&B</span>
+            <span class="skill-pill">YAML</span>
+            <span class="skill-pill">lpips</span>
+          </div>
+        </div>
+
+        <div class="proj-sidebar-card reveal reveal-delay-1">
+          <h3 class="proj-sidebar-heading">Links</h3>
+          <div class="proj-sidebar-links">
+            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" class="proj-sidebar-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub Repository</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-sidebar-card reveal reveal-delay-2">
+          <h3 class="proj-sidebar-heading">More Projects</h3>
+          <div class="proj-sidebar-links">
+            <a href="index.html#projects" class="proj-sidebar-link">
+              <i class="fas fa-th-large"></i>
+              <span>All Projects</span>
+              <i class="fas fa-arrow-right proj-ext-icon"></i>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>

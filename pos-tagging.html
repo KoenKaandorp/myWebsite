@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Tagging: BiLSTM + CRF vs Softmax — Koen Kaandorp</title>
+  <meta name="description" content="Part-of-speech tagging on Italian with a BiLSTM model — comparing a Softmax classifier against a CRF decoder, using FastText embeddings on the EAGLES corpus.">
+  <meta name="theme-color" content="#060D1A">
+  <meta name="author" content="Koen Kaandorp">
+  <link rel="icon" href="media/laptop-solid.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Koen Kaandorp</a>
+      <ul class="nav-links">
+        <li><a href="index.html#experience" data-num="01">Experience</a></li>
+        <li><a href="index.html#projects" data-num="02">Projects</a></li>
+        <li><a href="index.html#skills" data-num="03">Tech Stack</a></li>
+        <li><a href="index.html#about" data-num="04">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html#experience">01 — Experience</a>
+    <a href="index.html#projects">02 — Projects</a>
+    <a href="index.html#skills">03 — Tech Stack</a>
+    <a href="index.html#about">04 — About</a>
+    <a href="index.html#contact">05 — Contact</a>
+  </div>
+
+  <!-- ===== PROJECT HERO ===== -->
+  <section class="proj-hero">
+    <div class="container">
+      <a href="index.html#projects" class="proj-back reveal">
+        <i class="fas fa-arrow-left"></i> Back to projects
+      </a>
+
+      <div class="proj-hero-layout">
+        <div class="proj-hero-text">
+          <div class="proj-tags reveal reveal-delay-1">
+            <span class="project-tag">PyTorch</span>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">Sequence Labelling</span>
+          </div>
+          <h1 class="proj-title reveal reveal-delay-2">
+            POS Tagging:<br>CRF vs Softmax
+          </h1>
+          <p class="proj-subtitle reveal reveal-delay-3">
+            Part-of-speech tagging on Italian text using a 3-layer BiLSTM — comparing a standard Softmax classifier against a Conditional Random Field decoder, with FastText embeddings pre-trained on 157 languages.
+          </p>
+          <div class="proj-meta reveal reveal-delay-3">
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Year</span>
+              <span class="proj-meta-value">2025</span>
+            </div>
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Type</span>
+              <span class="proj-meta-value">Academic</span>
+            </div>
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Status</span>
+              <span class="proj-meta-value proj-status-done">Completed</span>
+            </div>
+          </div>
+          <div class="proj-actions reveal reveal-delay-3">
+            <a href="https://github.com/koenkaandorp/POSTaggingCRFSoftmax" target="_blank" class="btn-primary">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-hero-img reveal reveal-delay-2">
+          <div class="proj-img-placeholder">
+            <i class="fas fa-tags"></i>
+            <span>BiLSTM · CRF · POS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT BODY ===== -->
+  <main class="proj-body">
+    <div class="container proj-content-grid">
+
+      <article class="proj-main">
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Overview</h2>
+          <p>
+            Part-of-speech (POS) tagging is the task of assigning a grammatical label — noun, verb, adjective, and so on — to every word in a sentence. It is one of the foundational NLP tasks: accurate POS tags inform nearly every downstream task from parsing to information extraction.
+          </p>
+          <p>
+            This project trains and compares two sequence-labelling models on the Italian EAGLES corpus. Both share the same BiLSTM backbone and FastText word embeddings; the only difference is in the output layer. The first model uses a standard Softmax classifier — treating each token independently at decode time. The second replaces this with a Conditional Random Field (CRF), which models tag-to-tag transition probabilities and decodes the full sequence jointly using the Viterbi algorithm.
+          </p>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">The Problem</h2>
+          <p>
+            A Softmax classifier assigns each token a tag independently, ignoring the fact that some tag sequences are grammatically impossible — a verb following another verb without a noun in between, for example. In practice this means the model can predict sequences that no real sentence would ever have.
+          </p>
+          <p>
+            A CRF explicitly models these dependencies by learning a transition matrix over tags and performing Viterbi decoding across the full sequence. The hypothesis is that this structural constraint should improve accuracy, especially on morphologically rich languages like Italian where tag boundaries are informative.
+          </p>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Approach</h2>
+          <ul class="proj-list">
+            <li><strong style="color: var(--text-bright);">Data</strong> — The EAGLES corpus provides Italian text pre-split into train and test sets. Sentences are reconstructed by splitting on full-stop tokens, giving the model the sentence context it needs. Unknown words are mapped to a shared <code style="font-family:var(--mono);color:var(--cyan);font-size:.85em">&lt;UNK&gt;</code> token.</li>
+            <li><strong style="color: var(--text-bright);">Embeddings</strong> — A FastText model pre-trained on Italian Common Crawl (300-dimensional) is used to initialise the embedding layer. The embeddings are <em>not</em> frozen — they are fine-tuned during training, allowing the model to specialise them for POS tagging.</li>
+            <li><strong style="color: var(--text-bright);">BiLSTM backbone</strong> — Both models use a 3-layer bidirectional LSTM with hidden dimension 256 and dropout 0.5 throughout — between embedding and LSTM, between LSTM layers, and before the output head. Gradients are clipped to norm 5 and optimised with NAdam.</li>
+            <li><strong style="color: var(--text-bright);">Softmax model</strong> — The BiLSTM output at each timestep is passed through a two-layer MLP (hidden_dim → hidden_dim/2 → tagset) with ReLU and dropout. Training uses Cross-Entropy loss with <code style="font-family:var(--mono);color:var(--cyan);font-size:.85em">ignore_index=-100</code> to mask padding.</li>
+            <li><strong style="color: var(--text-bright);">CRF model</strong> — The BiLSTM output is projected to emission scores, then fed into a CRF layer. Training maximises the conditional log-likelihood of the correct tag sequence; inference runs the Viterbi algorithm to find the globally optimal tag sequence given the emission and transition scores.</li>
+            <li><strong style="color: var(--text-bright);">Evaluation</strong> — Both overall token accuracy and OOV (unknown word) accuracy are tracked separately, because UNK tokens are the hardest cases and reveal how well the models generalise beyond their vocabulary.</li>
+          </ul>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Results</h2>
+          <p>
+            Both models reach strong test accuracy on Italian POS tagging, converging quickly within the first 5 epochs. The CRF model edges ahead on both overall accuracy and — more notably — on OOV word accuracy, where the structural constraints from the transition matrix compensate for the weaker token-level signal of unknown words.
+          </p>
+
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <div class="proj-stat-num">94.15%</div>
+              <div class="proj-stat-label">Softmax test accuracy</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">94.36%</div>
+              <div class="proj-stat-label">CRF test accuracy</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">60.59%</div>
+              <div class="proj-stat-label">Softmax UNK accuracy</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">61.97%</div>
+              <div class="proj-stat-label">CRF UNK accuracy</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Reflections</h2>
+          <p>
+            The CRF improvement is real but modest at the overall level — about 0.2 percentage points. The more meaningful gap shows up on unknown words, where the CRF's structural knowledge of which tags can follow which provides a useful prior when the embedding signal is weak. This suggests the CRF is doing exactly what it is designed to do: regularise via tag-transition constraints when token-level evidence is ambiguous.
+          </p>
+          <p>
+            The UNK accuracy of around 60% is a ceiling imposed by the embedding strategy: unknown words all share the same initialisation. A natural extension would be character-level or subword embeddings (e.g. BPE or byte-level), which would give the model morphological information even for unseen words — particularly valuable for Italian, which has rich inflectional morphology. Fine-tuning a multilingual transformer like mBERT would likely push both models well above 97%.
+          </p>
+        </section>
+
+      </article>
+
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="proj-sidebar">
+
+        <div class="proj-sidebar-card reveal">
+          <h3 class="proj-sidebar-heading">Tech Stack</h3>
+          <div class="skill-pills" style="gap: 0.5rem;">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">torchcrf</span>
+            <span class="skill-pill">FastText</span>
+            <span class="skill-pill">gensim</span>
+            <span class="skill-pill">NumPy</span>
+            <span class="skill-pill">Pandas</span>
+            <span class="skill-pill">Matplotlib</span>
+            <span class="skill-pill">Jupyter</span>
+          </div>
+        </div>
+
+        <div class="proj-sidebar-card reveal reveal-delay-1">
+          <h3 class="proj-sidebar-heading">Links</h3>
+          <div class="proj-sidebar-links">
+            <a href="https://github.com/koenkaandorp/POSTaggingCRFSoftmax" target="_blank" class="proj-sidebar-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub Repository</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-sidebar-card reveal reveal-delay-2">
+          <h3 class="proj-sidebar-heading">More Projects</h3>
+          <div class="proj-sidebar-links">
+            <a href="index.html#projects" class="proj-sidebar-link">
+              <i class="fas fa-th-large"></i>
+              <span>All Projects</span>
+              <i class="fas fa-arrow-right proj-ext-icon"></i>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
