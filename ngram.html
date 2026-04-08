@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Name — Koen Kaandorp</title>
-  <meta name="description" content="A brief description of this project by Koen Kaandorp.">
+  <title>N-Gram Language Model — Koen Kaandorp</title>
+  <meta name="description" content="An n-gram language model trained on the Lord of the Rings trilogy, with bigram, trigram, backoff, and Kneser-Ney smoothing implementations.">
   <meta name="theme-color" content="#060D1A">
   <meta name="author" content="Koen Kaandorp">
   <link rel="icon" href="media/laptop-solid.ico" type="image/x-icon">
@@ -56,43 +56,36 @@
       <div class="proj-hero-layout">
         <div class="proj-hero-text">
           <div class="proj-tags reveal reveal-delay-1">
-            <!-- EDIT: Replace with your actual tags -->
             <span class="project-tag">Python</span>
-            <span class="project-tag">Machine Learning</span>
-            <span class="project-tag">PyTorch</span>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">Language Modelling</span>
           </div>
           <h1 class="proj-title reveal reveal-delay-2">
-            <!-- EDIT: Your project title -->
-            Project Name
+            N-Gram Language Model
           </h1>
           <p class="proj-subtitle reveal reveal-delay-3">
-            <!-- EDIT: One-sentence summary of what this project does -->
-            A short, punchy description of what this project does and what makes it interesting.
+            A from-scratch n-gram language model trained on the Lord of the Rings trilogy — built up from bigrams to a full backoff model with Kneser-Ney smoothing, and deployed as an interactive text generator.
           </p>
           <div class="proj-meta reveal reveal-delay-3">
             <div class="proj-meta-item">
               <span class="proj-meta-label">Year</span>
-              <!-- EDIT -->
-              <span class="proj-meta-value">2025</span>
+              <span class="proj-meta-value">2024</span>
             </div>
             <div class="proj-meta-item">
               <span class="proj-meta-label">Type</span>
-              <!-- EDIT: e.g. Personal / Academic / Open Source -->
               <span class="proj-meta-value">Personal</span>
             </div>
             <div class="proj-meta-item">
               <span class="proj-meta-label">Status</span>
-              <!-- EDIT: e.g. Completed / In progress / Archived -->
               <span class="proj-meta-value proj-status-done">Completed</span>
             </div>
           </div>
           <div class="proj-actions reveal reveal-delay-3">
-            <!-- EDIT: Update or remove these links as needed -->
-            <a href="https://github.com/koenkaandorp/your-repo" target="_blank" class="btn-primary">
+            <a href="https://github.com/koenkaandorp/NGramModel" target="_blank" class="btn-primary">
               <i class="fab fa-github"></i> View on GitHub
             </a>
-            <a href="#" class="btn-ghost">
-              <i class="fas fa-external-link-alt"></i> Live Demo
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="btn-ghost">
+              <i class="fas fa-flask"></i> Try it yourself
             </a>
           </div>
         </div>
@@ -103,8 +96,8 @@
           <!-- <img src="media/your-project-screenshot.png" alt="Project screenshot"> -->
           <!-- Option B: placeholder (remove when you have a real image) -->
           <div class="proj-img-placeholder">
-            <i class="fas fa-code"></i>
-            <span>Project Preview</span>
+            <i class="fas fa-book-open"></i>
+            <span>ngram.koenkaandorp.nl</span>
           </div>
         </div>
       </div>
@@ -122,40 +115,58 @@
         <section class="proj-section reveal">
           <h2 class="proj-section-title">Overview</h2>
           <p>
-            <!-- EDIT: Replace with a detailed description of your project -->
-            Write a thorough overview of your project here. Explain what it does, why you built it, and what
-            problem it solves. This is the place to tell the story behind the project — what motivated you,
-            what you learned, and what makes it interesting.
+            This project is a pure-Python implementation of n-gram language models, trained on J.R.R. Tolkien's
+            Lord of the Rings trilogy. Starting from the simplest possible language model — a bigram — the project
+            builds up through trigrams and arbitrary n-grams, then layers on two important real-world improvements:
+            backoff and Kneser-Ney smoothing.
           </p>
           <p>
-            You can use multiple paragraphs. Keep it clear and direct.
+            The end result is a text generator that produces new "Tolkien-esque" sentences entirely from statistical
+            patterns in the source text — no neural networks involved. You can try it yourself at
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="subtle-link" style="color: var(--cyan);">ngram.koenkaandorp.nl</a>.
           </p>
         </section>
 
-        <!-- MOTIVATION / PROBLEM STATEMENT -->
+        <!-- PROBLEM -->
         <section class="proj-section reveal">
           <h2 class="proj-section-title">The Problem</h2>
           <p>
-            <!-- EDIT: What problem does this solve? Why does it matter? -->
-            Describe the problem this project addresses. What was the pain point, research question, or
-            challenge you set out to tackle?
+            N-gram models are one of the cornerstones of classical NLP — predating neural language models by
+            decades — yet they're often only taught at the surface level: "count word pairs, compute probabilities,
+            done." The real challenge is what happens next. A naive n-gram model breaks down immediately on
+            unseen word sequences, which are inevitable in any reasonably-sized vocabulary.
+          </p>
+          <p>
+            This project set out to build the full stack from scratch: from raw text tokenisation all the way
+            to a smoothed backoff model, without relying on any NLP libraries. The goal was to deeply understand
+            what these models actually do before moving on to the neural successors that replaced them.
           </p>
         </section>
 
-        <!-- APPROACH / SOLUTION -->
+        <!-- APPROACH -->
         <section class="proj-section reveal">
           <h2 class="proj-section-title">Approach</h2>
           <p>
-            <!-- EDIT: How did you build it? What methods/techniques did you use? -->
-            Explain how you approached the problem. What techniques, algorithms, or design patterns did you
-            apply? Walk the reader through your solution at a high level.
+            The project is structured as a progressive build, with each stage adding a meaningful capability
+            over the last.
           </p>
-
-          <!-- Optional: key points list -->
           <ul class="proj-list">
-            <li>Key aspect one of your approach</li>
-            <li>Key aspect two — e.g. the model architecture you used</li>
-            <li>Key aspect three — e.g. data pipeline details</li>
+            <li><strong style="color: var(--text-bright);">Tokenisation</strong> — A custom tokeniser handles sentence boundary tokens
+              (<code style="font-family: var(--mono); color: var(--cyan); font-size: 0.85em;">&lt;s&gt;</code> /
+              <code style="font-family: var(--mono); color: var(--cyan); font-size: 0.85em;">&lt;/s&gt;</code>),
+              punctuation, and lowercasing, turning the raw trilogy text into a clean sequence of tokens.</li>
+            <li><strong style="color: var(--text-bright);">N-gram frequency tables</strong> — For a given <em>n</em>, the model counts
+              how often each (n-1)-word context is followed by each word, building a nested frequency dictionary.
+              Low-frequency entries are pruned to keep the model compact.</li>
+            <li><strong style="color: var(--text-bright);">Backoff model</strong> — When a context hasn't been seen at order <em>n</em>,
+              the model gracefully falls back to the (n-1)-gram model, down to a unigram baseline. This solves the
+              zero-probability problem without discarding any information.</li>
+            <li><strong style="color: var(--text-bright);">Kneser-Ney smoothing</strong> — The most sophisticated variant replaces raw
+              continuation counts with Kneser-Ney estimates: a word is weighted not just by how often it appears,
+              but by how many distinct contexts it completes. This gives much better probability estimates for rare
+              words.</li>
+            <li><strong style="color: var(--text-bright);">Model serialisation</strong> — Both the standard and backoff models can be
+              saved to and loaded from JSON, making the trained model portable and usable in the deployed web app.</li>
           </ul>
         </section>
 
@@ -163,24 +174,28 @@
         <section class="proj-section reveal">
           <h2 class="proj-section-title">Results</h2>
           <p>
-            <!-- EDIT: What did you achieve? Include metrics if relevant -->
-            Present the outcomes. If you have performance metrics, accuracy numbers, or user results, put them
-            here. What worked well, and what were the limitations?
+            The backoff model with Kneser-Ney smoothing produces noticeably more coherent output than the plain
+            n-gram baseline. At higher n-values the model essentially memorises phrases from the trilogy; at lower
+            values it becomes more creative but less grammatical. The sweet spot for fluent-sounding generation
+            sits around n&nbsp;=&nbsp;5–7.
+          </p>
+          <p>
+            The live demo at <a href="https://ngram.koenkaandorp.nl" target="_blank" class="subtle-link" style="color: var(--cyan);">ngram.koenkaandorp.nl</a> lets
+            you experiment with different n values and seed phrases to see this tradeoff in action.
           </p>
 
-          <!-- Optional: stat highlights — edit or delete -->
           <div class="proj-stats">
             <div class="proj-stat">
-              <div class="proj-stat-num">94%</div>
-              <div class="proj-stat-label">Accuracy</div>
+              <div class="proj-stat-num">3</div>
+              <div class="proj-stat-label">Books of training data</div>
             </div>
             <div class="proj-stat">
-              <div class="proj-stat-num">2×</div>
-              <div class="proj-stat-label">Faster than baseline</div>
+              <div class="proj-stat-num">10</div>
+              <div class="proj-stat-label">Max n-gram order</div>
             </div>
             <div class="proj-stat">
-              <div class="proj-stat-num">10k</div>
-              <div class="proj-stat-label">Data points</div>
+              <div class="proj-stat-num">3</div>
+              <div class="proj-stat-label">Model variants</div>
             </div>
           </div>
         </section>
@@ -189,9 +204,15 @@
         <section class="proj-section reveal">
           <h2 class="proj-section-title">Reflections</h2>
           <p>
-            <!-- EDIT: What did you learn? What would you do differently? -->
-            Share what you learned from the project. What would you do differently with hindsight? Are there
-            extensions or future directions you'd want to explore?
+            Building this from scratch made the limitations of n-gram models very concrete. The core issue isn't
+            the lack of smoothing — it's the lack of any notion of meaning. The model has no idea that "Frodo"
+            and "hobbit" are related, or that "the ring" is the central object of the entire corpus. It just
+            counts sequences.
+          </p>
+          <p>
+            That limitation is exactly what makes this a useful stepping stone. Neural language models solve it
+            by learning distributed representations of words — embeddings — which is the natural next project
+            after fully understanding what statistical models can and can't do.
           </p>
         </section>
 
@@ -203,12 +224,10 @@
         <div class="proj-sidebar-card reveal">
           <h3 class="proj-sidebar-heading">Tech Stack</h3>
           <div class="skill-pills" style="gap: 0.5rem;">
-            <!-- EDIT: Replace with your actual technologies -->
             <span class="skill-pill">Python</span>
-            <span class="skill-pill">PyTorch</span>
-            <span class="skill-pill">Scikit-learn</span>
-            <span class="skill-pill">NumPy</span>
-            <span class="skill-pill">Pandas</span>
+            <span class="skill-pill">collections</span>
+            <span class="skill-pill">functools</span>
+            <span class="skill-pill">JSON</span>
             <span class="skill-pill">Jupyter</span>
           </div>
         </div>
@@ -216,26 +235,16 @@
         <div class="proj-sidebar-card reveal reveal-delay-1">
           <h3 class="proj-sidebar-heading">Links</h3>
           <div class="proj-sidebar-links">
-            <!-- EDIT: Add or remove links as needed -->
-            <a href="https://github.com/koenkaandorp/your-repo" target="_blank" class="proj-sidebar-link">
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="proj-sidebar-link">
+              <i class="fas fa-flask"></i>
+              <span>Try it yourself</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+            <a href="https://github.com/koenkaandorp/NGramModel" target="_blank" class="proj-sidebar-link">
               <i class="fab fa-github"></i>
               <span>GitHub Repository</span>
               <i class="fas fa-external-link-alt proj-ext-icon"></i>
             </a>
-            <!-- Uncomment if you have a paper/report
-            <a href="#" target="_blank" class="proj-sidebar-link">
-              <i class="fas fa-file-alt"></i>
-              <span>Read the Report</span>
-              <i class="fas fa-external-link-alt proj-ext-icon"></i>
-            </a>
-            -->
-            <!-- Uncomment if you have a live demo
-            <a href="#" target="_blank" class="proj-sidebar-link">
-              <i class="fas fa-globe"></i>
-              <span>Live Demo</span>
-              <i class="fas fa-external-link-alt proj-ext-icon"></i>
-            </a>
-            -->
           </div>
         </div>
 
@@ -263,7 +272,7 @@
       <div class="footer-social">
         <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope"></i></a>
+        <a href="/cdn-cgi/l/email-protection#6f04000a012f04000a01040e0e010b001d1f410103"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
   </footer>
