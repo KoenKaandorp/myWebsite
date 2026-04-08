@@ -148,3 +148,58 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   animate();
 });
+
+/* ===================== PROJECT PAGE ADDITIONS ===================== */
+
+/* --- Navbar: always scrolled on inner pages --- */
+(function () {
+    const navbar = document.getElementById("navbar");
+    if (!navbar) return;
+
+    // If this is a project page (not the home page), keep navbar always visible
+    const isProjectPage = !document.getElementById("hero-canvas");
+    if (isProjectPage) {
+        navbar.classList.add("scrolled");
+        window.addEventListener("scroll", () => {
+            navbar.classList.add("scrolled"); // always keep it visible
+        });
+    }
+})();
+
+/* --- Mobile nav for project pages --- */
+(function () {
+    const toggle = document.getElementById("nav-toggle");
+    const mobileNav = document.getElementById("mobile-nav");
+    if (!toggle || !mobileNav) return;
+
+    // Only attach if not already attached (home page script handles its own)
+    if (!toggle.dataset.bound) {
+        toggle.dataset.bound = "1";
+        toggle.addEventListener("click", () => {
+            const open = mobileNav.classList.toggle("open");
+            toggle.classList.toggle("open", open);
+            toggle.setAttribute("aria-expanded", open);
+        });
+        mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+            mobileNav.classList.remove("open");
+            toggle.classList.remove("open");
+        }));
+    }
+})();
+
+/* --- Scroll reveal for project pages --- */
+(function () {
+    const alreadyObserved = new WeakSet();
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".reveal").forEach(el => {
+        if (!alreadyObserved.has(el)) {
+            alreadyObserved.add(el);
+            observer.observe(el);
+        }
+    });
+})();

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Name — Koen Kaandorp</title>
+  <meta name="description" content="A brief description of this project by Koen Kaandorp.">
+  <meta name="theme-color" content="#060D1A">
+  <meta name="author" content="Koen Kaandorp">
+  <link rel="icon" href="media/laptop-solid.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Koen Kaandorp</a>
+      <ul class="nav-links">
+        <li><a href="index.html#experience" data-num="01">Experience</a></li>
+        <li><a href="index.html#projects" data-num="02">Projects</a></li>
+        <li><a href="index.html#skills" data-num="03">Tech Stack</a></li>
+        <li><a href="index.html#about" data-num="04">About</a></li>
+      </ul>
+      <a href="index.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html#experience">01 — Experience</a>
+    <a href="index.html#projects">02 — Projects</a>
+    <a href="index.html#skills">03 — Tech Stack</a>
+    <a href="index.html#about">04 — About</a>
+    <a href="index.html#contact">05 — Contact</a>
+  </div>
+
+  <!-- ===== PROJECT HERO ===== -->
+  <section class="proj-hero">
+    <div class="container">
+      <a href="index.html#projects" class="proj-back reveal">
+        <i class="fas fa-arrow-left"></i> Back to projects
+      </a>
+
+      <div class="proj-hero-layout">
+        <div class="proj-hero-text">
+          <div class="proj-tags reveal reveal-delay-1">
+            <!-- EDIT: Replace with your actual tags -->
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Machine Learning</span>
+            <span class="project-tag">PyTorch</span>
+          </div>
+          <h1 class="proj-title reveal reveal-delay-2">
+            <!-- EDIT: Your project title -->
+            Project Name
+          </h1>
+          <p class="proj-subtitle reveal reveal-delay-3">
+            <!-- EDIT: One-sentence summary of what this project does -->
+            A short, punchy description of what this project does and what makes it interesting.
+          </p>
+          <div class="proj-meta reveal reveal-delay-3">
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Year</span>
+              <!-- EDIT -->
+              <span class="proj-meta-value">2025</span>
+            </div>
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Type</span>
+              <!-- EDIT: e.g. Personal / Academic / Open Source -->
+              <span class="proj-meta-value">Personal</span>
+            </div>
+            <div class="proj-meta-item">
+              <span class="proj-meta-label">Status</span>
+              <!-- EDIT: e.g. Completed / In progress / Archived -->
+              <span class="proj-meta-value proj-status-done">Completed</span>
+            </div>
+          </div>
+          <div class="proj-actions reveal reveal-delay-3">
+            <!-- EDIT: Update or remove these links as needed -->
+            <a href="https://github.com/koenkaandorp/your-repo" target="_blank" class="btn-primary">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+            <a href="#" class="btn-ghost">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-hero-img reveal reveal-delay-2">
+          <!-- EDIT: Replace with your project image/screenshot -->
+          <!-- Option A: use an image -->
+          <!-- <img src="media/your-project-screenshot.png" alt="Project screenshot"> -->
+          <!-- Option B: placeholder (remove when you have a real image) -->
+          <div class="proj-img-placeholder">
+            <i class="fas fa-code"></i>
+            <span>Project Preview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT BODY ===== -->
+  <main class="proj-body">
+    <div class="container proj-content-grid">
+
+      <!-- ===== LEFT: MAIN CONTENT ===== -->
+      <article class="proj-main">
+
+        <!-- OVERVIEW -->
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Overview</h2>
+          <p>
+            <!-- EDIT: Replace with a detailed description of your project -->
+            Write a thorough overview of your project here. Explain what it does, why you built it, and what
+            problem it solves. This is the place to tell the story behind the project — what motivated you,
+            what you learned, and what makes it interesting.
+          </p>
+          <p>
+            You can use multiple paragraphs. Keep it clear and direct.
+          </p>
+        </section>
+
+        <!-- MOTIVATION / PROBLEM STATEMENT -->
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">The Problem</h2>
+          <p>
+            <!-- EDIT: What problem does this solve? Why does it matter? -->
+            Describe the problem this project addresses. What was the pain point, research question, or
+            challenge you set out to tackle?
+          </p>
+        </section>
+
+        <!-- APPROACH / SOLUTION -->
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Approach</h2>
+          <p>
+            <!-- EDIT: How did you build it? What methods/techniques did you use? -->
+            Explain how you approached the problem. What techniques, algorithms, or design patterns did you
+            apply? Walk the reader through your solution at a high level.
+          </p>
+
+          <!-- Optional: key points list -->
+          <ul class="proj-list">
+            <li>Key aspect one of your approach</li>
+            <li>Key aspect two — e.g. the model architecture you used</li>
+            <li>Key aspect three — e.g. data pipeline details</li>
+          </ul>
+        </section>
+
+        <!-- RESULTS -->
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Results</h2>
+          <p>
+            <!-- EDIT: What did you achieve? Include metrics if relevant -->
+            Present the outcomes. If you have performance metrics, accuracy numbers, or user results, put them
+            here. What worked well, and what were the limitations?
+          </p>
+
+          <!-- Optional: stat highlights — edit or delete -->
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <div class="proj-stat-num">94%</div>
+              <div class="proj-stat-label">Accuracy</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">2×</div>
+              <div class="proj-stat-label">Faster than baseline</div>
+            </div>
+            <div class="proj-stat">
+              <div class="proj-stat-num">10k</div>
+              <div class="proj-stat-label">Data points</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- REFLECTIONS -->
+        <section class="proj-section reveal">
+          <h2 class="proj-section-title">Reflections</h2>
+          <p>
+            <!-- EDIT: What did you learn? What would you do differently? -->
+            Share what you learned from the project. What would you do differently with hindsight? Are there
+            extensions or future directions you'd want to explore?
+          </p>
+        </section>
+
+      </article>
+
+      <!-- ===== RIGHT: SIDEBAR ===== -->
+      <aside class="proj-sidebar">
+
+        <div class="proj-sidebar-card reveal">
+          <h3 class="proj-sidebar-heading">Tech Stack</h3>
+          <div class="skill-pills" style="gap: 0.5rem;">
+            <!-- EDIT: Replace with your actual technologies -->
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">Scikit-learn</span>
+            <span class="skill-pill">NumPy</span>
+            <span class="skill-pill">Pandas</span>
+            <span class="skill-pill">Jupyter</span>
+          </div>
+        </div>
+
+        <div class="proj-sidebar-card reveal reveal-delay-1">
+          <h3 class="proj-sidebar-heading">Links</h3>
+          <div class="proj-sidebar-links">
+            <!-- EDIT: Add or remove links as needed -->
+            <a href="https://github.com/koenkaandorp/your-repo" target="_blank" class="proj-sidebar-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub Repository</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+            <!-- Uncomment if you have a paper/report
+            <a href="#" target="_blank" class="proj-sidebar-link">
+              <i class="fas fa-file-alt"></i>
+              <span>Read the Report</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+            -->
+            <!-- Uncomment if you have a live demo
+            <a href="#" target="_blank" class="proj-sidebar-link">
+              <i class="fas fa-globe"></i>
+              <span>Live Demo</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+            -->
+          </div>
+        </div>
+
+        <div class="proj-sidebar-card reveal reveal-delay-2">
+          <h3 class="proj-sidebar-heading">More Projects</h3>
+          <div class="proj-sidebar-links">
+            <!-- EDIT: Link to your other project pages -->
+            <a href="index.html#projects" class="proj-sidebar-link">
+              <i class="fas fa-th-large"></i>
+              <span>All Projects</span>
+              <i class="fas fa-arrow-right proj-ext-icon"></i>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
