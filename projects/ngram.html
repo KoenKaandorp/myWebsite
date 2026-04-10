@@ -4,15 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meta-Learning for Neural Fields — Koen Kaandorp</title>
-  <meta name="description" content="Meta-learning framework for implicit neural representations — combining MAML, NeRV, SIREN and GradNCP coordinate sampling for fast video and image reconstruction.">
+  <title>N-Gram Language Model — Koen Kaandorp</title>
+  <meta name="description" content="An n-gram language model trained on the Lord of the Rings trilogy, with bigram, trigram, backoff, and Kneser-Ney smoothing implementations.">
   <meta name="theme-color" content="#060D1A">
   <meta name="author" content="Koen Kaandorp">
   <link rel="icon" href="media/laptop-solid.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -52,25 +56,24 @@
       <div class="proj-hero-layout">
         <div class="proj-hero-text">
           <div class="proj-tags reveal reveal-delay-1">
-            <span class="project-tag">PyTorch</span>
-            <span class="project-tag">Meta-Learning</span>
-            <span class="project-tag">Neural Fields</span>
-            <span class="project-tag">Computer Vision</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">Language Modelling</span>
           </div>
           <h1 class="proj-title reveal reveal-delay-2">
-            Meta-Learning for Neural Fields
+            N-Gram Language Model
           </h1>
           <p class="proj-subtitle reveal reveal-delay-3">
-            A meta-learning framework for implicit neural representations. Combining MAML, NeRV and SIREN decoders for effiecient dataset storage.
+            A from scratch n-gram language model trained on the Lord of the Rings trilogy. Built up from bigrams to a full backoff model with Kneser-Ney smoothing, and deployed as an interactive text generator.
           </p>
           <div class="proj-meta reveal reveal-delay-3">
             <div class="proj-meta-item">
               <span class="proj-meta-label">Year</span>
-              <span class="proj-meta-value">2024</span>
+              <span class="proj-meta-value">2026</span>
             </div>
             <div class="proj-meta-item">
               <span class="proj-meta-label">Type</span>
-              <span class="proj-meta-value">Academic</span>
+              <span class="proj-meta-value">Personal</span>
             </div>
             <div class="proj-meta-item">
               <span class="proj-meta-label">Status</span>
@@ -78,17 +81,17 @@
             </div>
           </div>
           <div class="proj-actions reveal reveal-delay-3">
-            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" class="btn-primary">
+            <a href="https://github.com/koenkaandorp/NGramModel" target="_blank" class="btn-primary">
               <i class="fab fa-github"></i> View on GitHub
+            </a>
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="btn-ghost">
+              <i class="fas fa-flask"></i> Try it yourself
             </a>
           </div>
         </div>
 
         <div class="proj-hero-img reveal reveal-delay-2">
-          <div class="proj-img-placeholder">
-            <i class="fas fa-photo-video"></i>
-            <span>Neural Field Reconstruction</span>
-          </div>
+          <img src="media/ngram_website.webp" alt="Project screenshot">
         </div>
       </div>
     </div>
@@ -98,34 +101,48 @@
   <main class="proj-body">
     <div class="container proj-content-grid">
 
+      <!-- ===== LEFT: MAIN CONTENT ===== -->
       <article class="proj-main">
 
+        <!-- OVERVIEW -->
         <section class="proj-section reveal">
           <h2 class="proj-section-title">Overview</h2>
           <p>
-            Implicit neural representations (INRs) are neural networks that learn to represent a signal (an image, a video, a sound) as a continuous function of coordinates. Instead of storing pixel values directly, the network learns a mapping from coordinates to signal values, essentially compressing the signal into its weights.
+            This project is a Python implementation of n-gram language models, trained on the
+            Lord of the Rings trilogy. Starting from the simplest version, a bigram, the project
+            builds up throug n-grams, then layers on three important improvements:
+            Pruning, Backoff and Kneser-Ney smoothing.
           </p>
           <p>
-            This project implements a full meta learning pipeline on top of neural fields: rather than training each network from scratch per signal, a meta learner finds an initialisation that can be quickly adapted to any new signal in just a handful of gradient steps. 
+            The end result is a text generator that produces new Tolkien like sentences. You can try it yourself at
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="subtle-link" style="color: var(--cyan);">Ngram</a>.
           </p>
         </section>
+      </article>
 
-      <!-- ===== SIDEBAR ===== -->
+      <!-- ===== RIGHT: SIDEBAR ===== -->
       <aside class="proj-sidebar">
 
         <div class="proj-sidebar-card reveal">
           <h3 class="proj-sidebar-heading">Tech Stack</h3>
           <div class="skill-pills" style="gap: 0.5rem;">
             <span class="skill-pill">Python</span>
-            <span class="skill-pill">PyTorch</span>
-            <span class="skill-pill">torchvision</span>
+            <span class="skill-pill">html</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">JSON</span>
+            <span class="skill-pill">Jupyter</span>
           </div>
         </div>
 
         <div class="proj-sidebar-card reveal reveal-delay-1">
           <h3 class="proj-sidebar-heading">Links</h3>
           <div class="proj-sidebar-links">
-            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" class="proj-sidebar-link">
+            <a href="https://ngram.koenkaandorp.nl" target="_blank" class="proj-sidebar-link">
+              <i class="fas fa-flask"></i>
+              <span>Try it yourself</span>
+              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            </a>
+            <a href="https://github.com/koenkaandorp/NGramModel" target="_blank" class="proj-sidebar-link">
               <i class="fab fa-github"></i>
               <span>GitHub Repository</span>
               <i class="fas fa-external-link-alt proj-ext-icon"></i>
@@ -136,6 +153,7 @@
         <div class="proj-sidebar-card reveal reveal-delay-2">
           <h3 class="proj-sidebar-heading">More Projects</h3>
           <div class="proj-sidebar-links">
+            <!-- EDIT: Link to your other project pages -->
             <a href="index.html#projects" class="proj-sidebar-link">
               <i class="fas fa-th-large"></i>
               <span>All Projects</span>
@@ -156,11 +174,12 @@
       <div class="footer-social">
         <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope"></i></a>
+        <a href="/cdn-cgi/l/email-protection#6f04000a012f04000a01040e0e010b001d1f410103"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
   </footer>
 
-  <script src="js/scripts.js"></script>
+  <script src="/js/scripts.js"></script>
 </body>
+
 </html>
