@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcudo Solver - Koen Kaandorp</title>
+    <meta name="description"
+        content="An interactive KenKen-style Calcudo puzzle solver built with a backtracking algorithm — featuring a drag-to-build UI, cage validation, play mode with hints, and support for grids up to 6×6.">
+    <meta name="theme-color" content="#060D1A">
+    <meta name="author" content="Koen Kaandorp">
+    <link rel="icon" href="/media/laptop-solid.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">Koen Kaandorp</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#experience" data-num="01">Experience</a></li>
+                <li><a href="../index.html#projects" data-num="02">Projects</a></li>
+                <li><a href="../index.html#skills" data-num="03">Tech Stack</a></li>
+                <li><a href="../index.html#about" data-num="04">About</a></li>
+            </ul>
+            <a href="../index.html#contact" class="nav-cta">Get in touch</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="../index.html#experience">01 — Experience</a>
+        <a href="../index.html#projects">02 — Projects</a>
+        <a href="../index.html#skills">03 — Tech Stack</a>
+        <a href="../index.html#about">04 — About</a>
+        <a href="../index.html#contact">05 — Contact</a>
+    </div>
+
+    <!-- ===== PROJECT HERO ===== -->
+    <section class="proj-hero">
+        <div class="container">
+            <a href="../index.html#projects" class="proj-back reveal">
+                <i class="fas fa-arrow-left"></i> Back to projects
+            </a>
+
+            <div class="proj-hero-layout">
+                <div class="proj-hero-text">
+                    <div class="proj-tags reveal reveal-delay-1">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Algorithms</span>
+                        <span class="project-tag">Web App</span>
+                    </div>
+                    <h1 class="proj-title reveal reveal-delay-2">
+                        Calcudo<br>Solver
+                    </h1>
+                    <p class="proj-subtitle reveal reveal-delay-3">
+                        An interactive KenKen-style puzzle builder and solver. Drag to select cells, define cages with
+                        arithmetic operations, and let a backtracking algorithm find the solution or switch to Play
+                        mode.
+                    </p>
+                    <div class="proj-meta reveal reveal-delay-3">
+                        <div class="proj-meta-item">
+                            <span class="proj-meta-label">Year</span>
+                            <span class="proj-meta-value">2026</span>
+                        </div>
+                        <div class="proj-meta-item">
+                            <span class="proj-meta-label">Type</span>
+                            <span class="proj-meta-value">Personal</span>
+                        </div>
+                        <div class="proj-meta-item">
+                            <span class="proj-meta-label">Status</span>
+                            <span class="proj-meta-value proj-status-done">Completed</span>
+                        </div>
+                    </div>
+                    <div class="proj-actions reveal reveal-delay-3">
+                        <a href="https://github.com/koenkaandorp/calcudo-solver" target="_blank" class="btn-primary">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        <a href="https://calcudo.koenkaandorp.nl" target="_blank" class="btn-ghost">
+                            <i class="fas fa-play"></i> Try it live
+                        </a>
+                    </div>
+                </div>
+
+                <div class="proj-hero-img reveal reveal-delay-2">
+                    <img src="/media/calcudo_solver.webp" alt="Calcudo Solver screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT BODY ===== -->
+    <main class="proj-body">
+        <div class="container proj-content-grid">
+
+            <article class="proj-main">
+
+                <section class="proj-section reveal">
+                    <h2 class="proj-section-title">Overview</h2>
+                    <p>
+                        Calcudo (also known as KenKen) is a logic puzzle played on an NxN grid. Like Sudoku, every row
+                        and column must contain the digits 1 through N exactly once. What sets it apart are the
+                        <em>cages</em> — coloured groups of cells that each carry an arithmetic target and an operation
+                        (addition, subtraction, multiplication, division, or a fixed value). The numbers in each cage
+                        must combine under that operation to hit the target.
+                    </p>
+                    <p>
+                        This project is a fully interactive web app that lets you build any Calcudo puzzle from scratch
+                        and solve it instantly, or challenge yourself in Play mode with a hint system to keep you
+                        unstuck.
+                    </p>
+                </section>
+            </article>
+
+            <!-- ===== SIDEBAR ===== -->
+            <aside class="proj-sidebar">
+
+                <div class="proj-sidebar-card reveal">
+                    <h3 class="proj-sidebar-heading">Tech Stack</h3>
+                    <div class="skill-pills" style="gap: 0.5rem;">
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">HTML</span>
+                        <span class="skill-pill">CSS</span>
+                        <span class="skill-pill">Backtracking</span>
+                        <span class="skill-pill">Constraint Propagation</span>
+                    </div>
+                </div>
+
+                <div class="proj-sidebar-card reveal reveal-delay-1">
+                    <h3 class="proj-sidebar-heading">Links</h3>
+                    <div class="proj-sidebar-links">
+                        <a href="https://github.com/koenkaandorp/calcudo-solver" target="_blank"
+                            class="proj-sidebar-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub Repository</span>
+                            <i class="fas fa-external-link-alt proj-ext-icon"></i>
+                        </a>
+                        <a href="/calcudo/index.html" target="_blank" class="proj-sidebar-link">
+                            <i class="fas fa-play"></i>
+                            <span>Live Demo</span>
+                            <i class="fas fa-external-link-alt proj-ext-icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="proj-sidebar-card reveal reveal-delay-2">
+                    <h3 class="proj-sidebar-heading">More Projects</h3>
+                    <div class="proj-sidebar-links">
+                        <a href="../index.html#projects" class="proj-sidebar-link">
+                            <i class="fas fa-th-large"></i>
+                            <span>All Projects</span>
+                            <i class="fas fa-arrow-right proj-ext-icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:koenkaandorp@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>
