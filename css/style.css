@@ -566,10 +566,102 @@ section {
 }
 
 /* ===================== PROJECTS ===================== */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+.projects-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.projects-header .section-title {
+    margin-bottom: 0;
+}
+
+.projects-nav {
+    display: flex;
+    gap: 0.6rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 3.5rem;
+}
+
+.projects-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.projects-nav-btn:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: var(--cyan-dim);
+}
+
+.projects-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+}
+
+.projects-carousel-wrap {
+    position: relative;
+    /* bleed edge-to-edge but keep cards aligned with container */
+    width: 100%;
+    overflow: hidden;
+}
+
+.projects-carousel-wrap::before,
+.projects-carousel-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.projects-carousel-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg), transparent);
+}
+
+.projects-carousel-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg), transparent);
+}
+
+.projects-carousel {
+    display: flex;
     gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem 5% 2rem;          /* 5% matches .container width: 90% / 2 */
+    scrollbar-width: none;             /* Firefox */
+    -ms-overflow-style: none;          /* IE/Edge */
+    cursor: grab;
+}
+
+.projects-carousel:active {
+    cursor: grabbing;
+}
+
+.projects-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.projects-carousel .project-card {
+    flex: 0 0 320px;
+    width: 320px;
 }
 
 .project-card {

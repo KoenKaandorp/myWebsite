@@ -149,6 +149,47 @@ document.addEventListener("DOMContentLoaded",()=>{
   animate();
 });
 
+/* ===================== PROJECTS CAROUSEL ===================== */
+(function () {
+    const carousel = document.getElementById("projects-carousel");
+    const prevBtn  = document.getElementById("proj-prev");
+    const nextBtn  = document.getElementById("proj-next");
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    const STEP = 340; // px per arrow click (card width + gap)
+
+    function updateButtons() {
+        prevBtn.disabled = carousel.scrollLeft <= 4;
+        nextBtn.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 4;
+    }
+
+    prevBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: -STEP, behavior: "smooth" });
+    });
+    nextBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left:  STEP, behavior: "smooth" });
+    });
+
+    carousel.addEventListener("scroll", updateButtons);
+    updateButtons();
+
+    /* Drag-to-scroll (mouse) */
+    let isDown = false, startX, startScroll;
+    carousel.addEventListener("mousedown", e => {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        startScroll = carousel.scrollLeft;
+    });
+    document.addEventListener("mouseup",   () => { isDown = false; });
+    document.addEventListener("mouseleave", () => { isDown = false; });
+    carousel.addEventListener("mousemove", e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        carousel.scrollLeft = startScroll - (x - startX);
+    });
+})();
+
 /* ===================== PROJECT PAGE ADDITIONS ===================== */
 
 /* --- Navbar: always scrolled on inner pages --- */

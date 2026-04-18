@@ -171,9 +171,21 @@
   <section id="projects">
     <div class="container">
       <p class="section-label reveal">02 — Portfolio</p>
-      <h2 class="section-title reveal reveal-delay-1">Projects</h2>
+      <div class="projects-header reveal reveal-delay-1">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-nav">
+          <button class="projects-nav-btn" id="proj-prev" aria-label="Previous projects">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button class="projects-nav-btn" id="proj-next" aria-label="Next projects">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
 
-      <div class="projects-grid">
+    <div class="projects-carousel-wrap">
+      <div class="projects-carousel" id="projects-carousel">
 
         <a href="projects/ngram.html" class="project-card reveal">
           <img src="media/ngram_website.webp" alt="Project screenshot">
@@ -216,7 +228,9 @@
         </a>
 
       </div>
-    </div>
+
+    </div><!-- end carousel -->
+    </div><!-- end carousel-wrap -->
   </section>
 
   <!-- ===== SKILLS ===== -->
