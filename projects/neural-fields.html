@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
   <title>Meta-Learning for Neural Fields — Koen Kaandorp</title>
   <meta name="description" content="Meta-learning framework for implicit neural representations — combining MAML, NeRV, SIREN and GradNCP coordinate sampling for fast video and image reconstruction.">
   <meta name="theme-color" content="#060D1A">
@@ -12,7 +14,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -23,30 +25,35 @@
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">Koen Kaandorp</a>
       <ul class="nav-links">
-        <li><a href="../index.html#experience" data-num="01">Experience</a></li>
-        <li><a href="../index.html#projects" data-num="02">Projects</a></li>
-        <li><a href="../index.html#skills" data-num="03">Tech Stack</a></li>
-        <li><a href="../index.html#about" data-num="04">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Tech stack</a></li>
+        <li><a href="../index.html#about">About</a></li>
       </ul>
-      <a href="../index.html#contact" class="nav-cta">Get in touch</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <a href="../index.html#contact" class="nav-cta">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
+          <i class="fas fa-sun" aria-hidden="true"></i><i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
   <div class="mobile-nav" id="mobile-nav">
-    <a href="../index.html#experience">01 — Experience</a>
-    <a href="../index.html#projects">02 — Projects</a>
-    <a href="../index.html#skills">03 — Tech Stack</a>
-    <a href="../index.html#about">04 — About</a>
-    <a href="../index.html#contact">05 — Contact</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#skills">Tech stack</a>
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#contact">Contact</a>
   </div>
 
   <!-- ===== PROJECT HERO ===== -->
   <section class="proj-hero">
     <div class="container">
       <a href="../index.html#projects" class="proj-back reveal">
-        <i class="fas fa-arrow-left"></i> Back to projects
+        <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to projects
       </a>
 
       <div class="proj-hero-layout">
@@ -61,7 +68,7 @@
             Meta-Learning for Neural Fields
           </h1>
           <p class="proj-subtitle reveal reveal-delay-3">
-            A meta-learning framework for implicit neural representations. Combining MAML, NeRV and SIREN decoders for effiecient dataset storage.
+            A meta-learning framework for implicit neural representations, combining MAML, NeRV and SIREN decoders for efficient dataset storage.
           </p>
           <div class="proj-meta reveal reveal-delay-3">
             <div class="proj-meta-item">
@@ -78,14 +85,14 @@
             </div>
           </div>
           <div class="proj-actions reveal reveal-delay-3">
-            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" class="btn-primary">
-              <i class="fab fa-github"></i> View on GitHub
+            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
             </a>
           </div>
         </div>
 
         <div class="proj-hero-img reveal reveal-delay-2">
-          <img src="/media/neuralfields.webp" alt="Project screenshot">
+          <img src="/media/neuralfields.webp" width="1536" height="1024" alt="Screenshot of the Meta-Learning for Neural Fields project">
         </div>
       </div>
     </div>
@@ -103,7 +110,7 @@
             Implicit neural representations (INRs) are neural networks that learn to represent a signal (an image, a video, a sound) as a continuous function of coordinates. Instead of storing pixel values directly, the network learns a mapping from coordinates to signal values, essentially compressing the signal into its weights.
           </p>
           <p>
-            This project implements a full meta learning pipeline on top of neural fields: rather than training each network from scratch per signal, a meta learner finds an initialisation that can be quickly adapted to any new signal in just a handful of gradient steps. 
+            This project implements a full meta-learning pipeline on top of neural fields: rather than training each network from scratch per signal, a meta-learner finds an initialisation that can be quickly adapted to any new signal in just a handful of gradient steps.
           </p>
         </section>
 
@@ -111,7 +118,7 @@
       <aside class="proj-sidebar">
 
         <div class="proj-sidebar-card reveal">
-          <h3 class="proj-sidebar-heading">Tech Stack</h3>
+          <h3 class="proj-sidebar-heading">Tech stack</h3>
           <div class="skill-pills" style="gap: 0.5rem;">
             <span class="skill-pill">Python</span>
             <span class="skill-pill">PyTorch</span>
@@ -122,21 +129,21 @@
         <div class="proj-sidebar-card reveal reveal-delay-1">
           <h3 class="proj-sidebar-heading">Links</h3>
           <div class="proj-sidebar-links">
-            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" class="proj-sidebar-link">
-              <i class="fab fa-github"></i>
-              <span>GitHub Repository</span>
-              <i class="fas fa-external-link-alt proj-ext-icon"></i>
+            <a href="https://github.com/koenkaandorp/NeuralFieldsAssignment" target="_blank" rel="noopener noreferrer" class="proj-sidebar-link">
+              <i class="fab fa-github" aria-hidden="true"></i>
+              <span>GitHub repository</span>
+              <i class="fas fa-external-link-alt proj-ext-icon" aria-hidden="true"></i>
             </a>
           </div>
         </div>
 
         <div class="proj-sidebar-card reveal reveal-delay-2">
-          <h3 class="proj-sidebar-heading">More Projects</h3>
+          <h3 class="proj-sidebar-heading">More projects</h3>
           <div class="proj-sidebar-links">
             <a href="../index.html#projects" class="proj-sidebar-link">
-              <i class="fas fa-th-large"></i>
-              <span>All Projects</span>
-              <i class="fas fa-arrow-right proj-ext-icon"></i>
+              <i class="fas fa-th-large" aria-hidden="true"></i>
+              <span>All projects</span>
+              <i class="fas fa-arrow-right proj-ext-icon" aria-hidden="true"></i>
             </a>
           </div>
         </div>
@@ -151,9 +158,9 @@
     <div class="footer-inner">
       <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
       <div class="footer-social">
-        <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/koenkaandorp" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="mailto:koen@koenkaandorp.nl"><i class="fas fa-envelope" aria-hidden="true"></i></a>
       </div>
     </div>
   </footer>

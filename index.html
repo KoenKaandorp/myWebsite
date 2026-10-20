@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
   <title>Koen Kaandorp — AI Engineer & Data Scientist</title>
   <meta name="description"
     content="Koen Kaandorp — MSc AI & Data Science student at TU/e, building machine learning systems and Python tools. Based in Eindhoven.">
@@ -22,9 +24,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap">
   <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -38,58 +39,63 @@
     <div class="nav-inner">
       <a href="#home" class="nav-logo">Koen Kaandorp</a>
       <ul class="nav-links">
-        <li><a href="#experience" data-num="01">Experience</a></li>
-        <li><a href="#projects" data-num="02">Projects</a></li>
-        <li><a href="#skills" data-num="03">Tech Stack</a></li>
-        <li><a href="#about" data-num="04">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Tech stack</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Get in touch</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <a href="#contact" class="nav-cta">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
+          <i class="fas fa-sun" aria-hidden="true"></i><i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
   <div class="mobile-nav" id="mobile-nav">
-    <a href="#experience">01 — Experience</a>
-    <a href="#projects">02 — Projects</a>
-    <a href="#skills">03 — Tech Stack</a>
-    <a href="#about">04 — About</a>
-    <a href="#contact">05 — Contact</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Tech stack</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <!-- ===== HERO ===== -->
   <section id="home" class="hero">
-    <div class="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
+    <div class="hero-canvas-wrap" aria-hidden="true"><canvas id="hero-canvas"></canvas></div>
     <div class="container">
       <div class="hero-content">
         <p class="hero-eyebrow">Based in Eindhoven, Netherlands</p>
         <h1>Building intelligent<br>systems that <em>work<br>with people</em></h1>
-        <p class="hero-sub">I am a <span class="type-wrap"><span id="changing-text"></span></span></p>
+        <p class="hero-sub">I am a <span class="type-wrap" aria-hidden="true"><span id="changing-text"></span></span><span class="sr-only" id="changing-text-sr"></span></p>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">View my work</a>
-          <a href="#contact" class="btn-ghost">Let's connect</a>
+          <a href="#contact" class="btn-ghost">Contact</a>
         </div>
       </div>
     </div>
-    <div class="hero-scroll">Scroll</div>
+    <div class="hero-scroll" aria-hidden="true">Scroll</div>
   </section>
 
   <!-- ===== EXPERIENCE ===== -->
   <section id="experience" class="experience">
     <div class="container">
-      <p class="section-label reveal">01 — Background</p>
+      <p class="section-label reveal">Background</p>
       <h2 class="section-title reveal reveal-delay-1">Experience</h2>
 
-      <div class="experience-tabs reveal reveal-delay-2">
-        <button class="tab-btn active" data-tab="education">Education</button>
-        <button class="tab-btn" data-tab="work">Work</button>
-        <button class="tab-btn" data-tab="volunteer">Volunteer</button>
+      <div class="experience-tabs reveal reveal-delay-2" role="tablist" aria-label="Experience">
+        <button class="tab-btn active" data-tab="education" role="tab" id="tabbtn-education" aria-selected="true" aria-controls="tab-education">Education</button>
+        <button class="tab-btn" data-tab="work" role="tab" id="tabbtn-work" aria-selected="false" aria-controls="tab-work" tabindex="-1">Work</button>
+        <button class="tab-btn" data-tab="volunteer" role="tab" id="tabbtn-volunteer" aria-selected="false" aria-controls="tab-volunteer" tabindex="-1">Volunteer</button>
       </div>
 
       <!-- Education -->
-      <div class="tab-panel active" id="tab-education">
+      <div class="tab-panel active" id="tab-education" role="tabpanel" aria-labelledby="tabbtn-education">
         <div class="timeline">
-          <div class="tl-item">
+          <div class="tl-item tl-item--current">
             <div class="tl-date">2024<br>Present</div>
             <div class="tl-body">
               <p class="tl-role">MSc Data Science & AI</p>
@@ -111,14 +117,14 @@
       </div>
 
       <!-- Work -->
-      <div class="tab-panel" id="tab-work">
+      <div class="tab-panel" id="tab-work" role="tabpanel" aria-labelledby="tabbtn-work">
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-date">2023</div>
             <div class="tl-body">
               <p class="tl-role">Sales</p>
               <p class="tl-place">The Sales Unit</p>
-              <p class="tl-desc">Door-to-door fundraising sales for KiKa charity.</p>
+              <p class="tl-desc">Door-to-door fundraising sales for the KiKa charity.</p>
             </div>
           </div>
           <div class="tl-item">
@@ -141,14 +147,14 @@
       </div>
 
       <!-- Volunteer -->
-      <div class="tab-panel" id="tab-volunteer">
+      <div class="tab-panel" id="tab-volunteer" role="tabpanel" aria-labelledby="tabbtn-volunteer">
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-date">2023<br>2024</div>
             <div class="tl-body">
               <p class="tl-role">Treasurer</p>
               <p class="tl-place">Studentproof</p>
-              <p class="tl-desc">Treasurer of the student Jazz association — bookkeeping, policy development, and
+              <p class="tl-desc">Treasurer of the student jazz association — bookkeeping, policy development, and
                 activity coordination.</p>
             </div>
           </div>
@@ -170,15 +176,15 @@
   <!-- ===== PROJECTS ===== -->
   <section id="projects">
     <div class="container">
-      <p class="section-label reveal">02 — Portfolio</p>
+      <p class="section-label reveal">Portfolio</p>
       <div class="projects-header reveal reveal-delay-1">
         <h2 class="section-title">Projects</h2>
         <div class="projects-nav">
           <button class="projects-nav-btn" id="proj-prev" aria-label="Previous projects">
-            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
           </button>
           <button class="projects-nav-btn" id="proj-next" aria-label="Next projects">
-            <i class="fas fa-arrow-right"></i>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -188,47 +194,47 @@
       <div class="projects-carousel" id="projects-carousel">
 
         <a href="projects/ngram.html" class="project-card reveal">
-          <img src="media/ngram_website.webp" alt="Project screenshot">
+          <img src="media/ngram_website.webp" class="project-img" width="1920" height="1273" loading="lazy" decoding="async" alt="Screenshot of the N-gram language model website">
           <div class="project-body">
             <div class="project-tags">
               <span class="project-tag">Python</span>
               <span class="project-tag">NLP</span>
-              <span class="project-tag">Language Modeling</span>
+              <span class="project-tag">Language Modelling</span>
             </div>
-            <h3 class="project-title">Ngram model</h3>
-            <p class="project-desc">Build an Ngram model based on the Lord Of The Rings trilogy with accompanying website</p>
-            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+            <h3 class="project-title">N-Gram Language Model</h3>
+            <p class="project-desc">Built an n-gram model on the Lord of the Rings trilogy, with an accompanying website.</p>
+            <span class="project-link">View project <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
         <a href="projects/neural-fields.html" class="project-card reveal reveal-delay-1">
-          <img src="media/neuralfields.webp" alt="Project screenshot">
+          <img src="media/neuralfields.webp" class="project-img" width="1536" height="1024" loading="lazy" decoding="async" alt="Screenshot of the Meta-Learning for Neural Fields project">
           <div class="project-body">
             <div class="project-tags">
               <span class="project-tag">Neural Fields</span>
               <span class="project-tag">Computer Vision</span>
             </div>
-            <h3 class="project-title">Neural Fields and Meta Learning</h3>
-            <p class="project-desc">A meta learning framework for implicit neural representations. Combining MAML, NeRV and SIREN decoders for effiecient dataset storage.</p>
-            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+            <h3 class="project-title">Meta-Learning for Neural Fields</h3>
+            <p class="project-desc">A meta-learning framework for implicit neural representations, combining MAML, NeRV and SIREN decoders for efficient dataset storage.</p>
+            <span class="project-link">View project <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
         <a href="projects/pos-tagging.html" class="project-card reveal reveal-delay-2">
-          <img src="media/pos_tagging.webp" alt="Project screenshot">
+          <img src="media/pos_tagging.webp" class="project-img" width="1586" height="992" loading="lazy" decoding="async" alt="Screenshot of the POS tagging comparison">
           <div class="project-body">
             <div class="project-tags">
               <span class="project-tag">PyTorch</span>
               <span class="project-tag">NLP</span>
             </div>
             <h3 class="project-title">POS Tagging: CRF vs Softmax</h3>
-            <p class="project-desc">Part of speech tagging on Italian text using a 3 layer BiLSTM with FastText embedding. Comparing CRF and Softmax</p>
-            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+            <p class="project-desc">Part-of-speech tagging on Italian text using a 3-layer BiLSTM with FastText embeddings, comparing CRF and Softmax.</p>
+            <span class="project-link">View project <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
         <a href="projects/calcudo-solver.html" class="project-card reveal reveal-delay-2">
-          <img src="media/Calcudo_solver.webp" alt="Project screenshot">
+          <img src="media/Calcudo_solver.webp" class="project-img" width="1920" height="1086" loading="lazy" decoding="async" alt="Screenshot of the Calcudo Solver">
           <div class="project-body">
             <div class="project-tags">
               <span class="project-tag">Backtracking</span>
@@ -236,13 +242,12 @@
             </div>
             <h3 class="project-title">Calcudo Solver</h3>
             <p class="project-desc">An interactive KenKen-style puzzle builder and solver.</p>
-            <span class="project-link">View project <i class="fas fa-arrow-right"></i></span>
+            <span class="project-link">View project <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
 
       </div>
 
-    </div><!-- end carousel -->
     </div><!-- end carousel-wrap -->
   </section>
 
@@ -252,8 +257,8 @@
       <div class="skills-layout">
 
         <div class="skills-left reveal">
-          <p class="section-label">03 — Toolkit</p>
-          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-label">Toolkit</p>
+          <h2 class="section-title">Tech stack</h2>
           <p class="section-intro">
             From data pipelines to deployable models, I work across the full technical stack. My background in
             Psychology gives me an edge in building systems that are not just smart but also usable.
@@ -262,7 +267,7 @@
 
         <div class="skills-right">
           <div class="skill-group reveal">
-            <p class="skill-group-title"><i class="fas fa-code"></i> Languages</p>
+            <p class="skill-group-title"><i class="fas fa-code" aria-hidden="true"></i> Languages</p>
             <div class="skill-pills">
               <span class="skill-pill">Python</span>
               <span class="skill-pill">JavaScript</span>
@@ -273,7 +278,7 @@
             </div>
           </div>
           <div class="skill-group reveal reveal-delay-1">
-            <p class="skill-group-title"><i class="fas fa-brain"></i> AI / ML</p>
+            <p class="skill-group-title"><i class="fas fa-brain" aria-hidden="true"></i> AI / ML</p>
             <div class="skill-pills">
               <span class="skill-pill">PyTorch</span>
               <span class="skill-pill">TensorFlow</span>
@@ -283,7 +288,7 @@
             </div>
           </div>
           <div class="skill-group reveal reveal-delay-2">
-            <p class="skill-group-title"><i class="fas fa-palette"></i> Creative</p>
+            <p class="skill-group-title"><i class="fas fa-palette" aria-hidden="true"></i> Creative</p>
             <div class="skill-pills">
               <span class="skill-pill">Photoshop</span>
               <span class="skill-pill">Lightroom</span>
@@ -303,13 +308,13 @@
 
         <div class="about-img-wrap reveal">
           <picture>
-            <source srcset="media/koenkaandorp.webp" alt="Portrait of Koen Kaandorp" type="image/webp">
-            <img src="media/koenkaandorp.jpg" alt="Portrait of Koen Kaandorp" loading="lazy" decoding="async">
+            <source srcset="media/koenkaandorp.webp" type="image/webp">
+            <img src="media/koenkaandorp.jpg" alt="Portrait of Koen Kaandorp" width="2164" height="2705" loading="lazy" decoding="async">
           </picture>
         </div>
 
         <div class="about-text reveal reveal-delay-1">
-          <p class="section-label">04 — The person</p>
+          <p class="section-label">The person</p>
           <h2 class="section-title">About me</h2>
           <p>
             I'm a master's student in <strong>Data Science & AI</strong> at <a href="https://www.tue.nl" target="_blank" rel="noopener noreferrer" class="subtle-link">Eindhoven University of Technology</a>, with a
@@ -323,7 +328,7 @@
           <div class="about-facts">
             <div class="fact">
               <div class="fact-num">2+</div>
-              <div class="fact-label">Years ML experience</div>
+              <div class="fact-label">Years of ML experience</div>
             </div>
             <div class="fact">
               <div class="fact-num">BSc</div>
@@ -350,40 +355,43 @@
       <div class="contact-layout">
 
         <div class="contact-left reveal">
-          <p class="section-label">05 — Get in touch</p>
+          <p class="section-label">Get in touch</p>
           <h2 class="section-title">Contact</h2>
           <p class="section-intro">
             Whether you have a project in mind, a question, or just want to say hello, my inbox is always open.
           </p>
           <div class="contact-links">
             <a href="mailto:koenkaandorp@gmail.com" class="contact-link">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
               <span class="contact-link-label">koenkaandorp@gmail.com</span>
             </a>
-            <a href="https://github.com/koenkaandorp" target="_blank" class="contact-link">
-              <i class="fab fa-github"></i>
+            <a href="https://github.com/koenkaandorp" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <i class="fab fa-github" aria-hidden="true"></i>
               <span class="contact-link-label">github.com/koenkaandorp</span>
             </a>
-            <a href="https://linkedin.com/in/koen-kaandorp" target="_blank" class="contact-link">
-              <i class="fab fa-linkedin"></i>
+            <a href="https://linkedin.com/in/koen-kaandorp" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
               <span class="contact-link-label">linkedin.com/in/koen-kaandorp</span>
             </a>
           </div>
         </div>
 
         <div class="reveal reveal-delay-1">
-          <div class="form-success" id="form-success">
+          <div class="form-success" id="form-success" role="status" tabindex="-1" hidden>
             ✓ Message sent — I'll get back to you soon.
           </div>
           <form id="contact-form" class="contact-form">
+            <div class="form-error" id="form-error" role="alert" hidden>
+              Your message couldn't be sent. Try again, or email me at <a href="mailto:koenkaandorp@gmail.com">koenkaandorp@gmail.com</a>.
+            </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="f-name">Name</label>
-                <input id="f-name" type="text" name="name" placeholder="Your name" required>
+                <input id="f-name" type="text" name="name" placeholder="Your name" autocomplete="name" required>
               </div>
               <div class="form-group">
                 <label for="f-email">Email</label>
-                <input id="f-email" type="email" name="email" placeholder="you@example.com" required>
+                <input id="f-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
               </div>
             </div>
             <div class="form-group">
@@ -394,7 +402,7 @@
               <label for="f-message">Message</label>
               <textarea id="f-message" name="message" placeholder="Your message…" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn-primary" style="width:fit-content;">Send message</button>
+            <button type="submit" class="btn-primary">Send message</button>
           </form>
         </div>
 
@@ -407,9 +415,9 @@
     <div class="footer-inner">
       <p class="footer-text">© 2026 <span>Koen Kaandorp</span>. All rights reserved.</p>
       <div class="footer-social">
-        <a href="https://github.com/koenkaandorp" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:koenkaandorp@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/koenkaandorp" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/koen-kaandorp" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="mailto:koenkaandorp@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
       </div>
     </div>
   </footer>
